@@ -1,0 +1,13 @@
+/*
+* Description :
+* Author: Aarón Escoboza Villegas
+*
+*/
+
+
+
+#include "stm32f4xx_hal.h"
+
+
+void servo_Init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+void servo_write(uint8_t degrees);

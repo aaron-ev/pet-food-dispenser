@@ -1,0 +1,33 @@
+/*
+ * servo.c
+ *
+ *  Created on: Jun 5, 2021
+ *      Author: aaron
+ */
+
+
+#include "servo.h"
+
+TIM_HandleTypeDef tim2PWM;
+
+void servo_tim_Init(TIM_HandleTypeDef *htim)
+{
+	TIM_OC_InitTypeDef tim2_config;
+	tim2PWM.Instance = TIM2;
+	tim2PWM.Init.Prescaler = 0;
+
+
+	if(HAL_TIM_PWM_Init(&tim2PWM);
+
+}
+
+void servo_Init(GPIO_TypeDef* GPIOx,TIM_HandleTypeDef *htim, uint16_t GPIO_Pin)
+{
+
+
+}
+void servo_Write(uint8_t degrees)
+
+{
+
+}

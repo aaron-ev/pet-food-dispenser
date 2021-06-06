@@ -1,0 +1,16 @@
+/*
+* Description : Header file to servo.c
+* Author: Aarón Escoboza Villegas
+*
+*/
+
+
+
+#include "stm32f4xx_hal.h"
+
+
+#define DEGREE_180 		180
+#define DEGREE_0		0
+
+void servo_Init(GPIO_TypeDef* GPIOx,TIM_HandleTypeDef *htim, uint16_t GPIO_Pin);
+void servo_write(uint8_t degrees);

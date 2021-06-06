@@ -1,0 +1,42 @@
+
+#include "servo.h"
+
+TIM_HandleTypeDef tim2PWM;
+
+void servo_TIM_Init(TIM_HandleTypeDef *htim)
+{
+	TIM_OC_InitTypeDef tim2PWM_config;
+
+	tim2PWM.Instance = TIM2;
+	tim2PWM.Init.Prescaler = 0;
+
+	if(HAL_TIM_PWM_Init(&tim2PWM) != HAL_OK)
+	{
+		servo_error_handler();
+	}
+	tim2PWM_config.OCMode = TIM_OCMODE_PWM1;
+	tim2PWM_config.OCPolarity = TIM_OCPOLARITY_HIGH;
+	//tim2PWM_config.Pulse =
+
+	if(HAL_TIM_PWM_ConfigChannel(&tim2PWM,&tim2PWM_config,TIM_CHANNEL_1) != HAL_OK)
+	{
+		servo_error_handler();
+	}
+
+}
+
+void servo_Init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+	servo_GPIO_Init(GPIOx,GPIO_Pin);
+	servo_TIM_Init();
+}
+void servo_Write(uint8_t degrees)
+
+{
+
+}
+
+void servo_error_handler(void)
+{
+	while(1);
+}
