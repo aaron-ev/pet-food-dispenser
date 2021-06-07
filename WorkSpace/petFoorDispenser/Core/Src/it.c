@@ -1,7 +1,6 @@
 
 
-#include "main.h"
-#include "servo.h"
+#include "stm32f4xx_hal.h"
 #include "stm32f4xx_it.h"
 
 void SysTick_Handler(void)

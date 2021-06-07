@@ -1,5 +1,4 @@
 Core/Src/main.o: ../Core/Src/main.c \
- C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/stm32f4xx_hal_conf.h \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -29,10 +28,9 @@ Core/Src/main.o: ../Core/Src/main.c \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
+ C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/lcd_i2c.h \
  C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/servo.h
-
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:
 
 C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -91,6 +89,8 @@ C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4x
 C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 
 C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:
 
 C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/lcd_i2c.h:
 

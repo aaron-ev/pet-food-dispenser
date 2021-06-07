@@ -14,8 +14,6 @@
 extern "C" {
 #endif
 
-#include "stm32f4xx_hal.h"
-
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
 #define GPIO_SERVO_A0 GPIO_PIN_0
@@ -24,6 +22,19 @@ I2C_HandleTypeDef hi2c1;
 
 void GPIO_Init(void);
 void Error_Handler(void);
+
+typedef enum
+{
+	FALSE,
+	TRUE
+}bool;
+
+uint8_t button_enter;
+uint8_t button_up;
+uint8_t button_down;
+
+bool screen_main = TRUE;
+bool screen_settings = FALSE;
 
 #ifdef __cplusplus
 }
