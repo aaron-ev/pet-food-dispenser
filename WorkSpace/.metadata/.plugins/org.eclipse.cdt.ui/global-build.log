@@ -1,4 +1,4 @@
-21:14:49 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+13:29:16 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Building file: ../Core/Src/servo.c
@@ -8,12 +8,8 @@ C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/servo.d" -MT"Core/Src/servo.o" -o "Core/Src/servo.o" "../Core/Src/servo.c"
-../Core/Src/servo.c: In function 'servo_Init':
-../Core/Src/servo.c:10:8: warning: variable 'pclk' set but not used [-Wunused-but-set-variable]
-  float pclk;
-        ^~~~
-Finished building: ../Core/Src/main.c
 Finished building: ../Core/Src/servo.c
+Finished building: ../Core/Src/main.c
  
  
 Building target: petFoorDispenser.elf
@@ -26,5 +22,159 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-   8088	     20	   1724	   9832	   2668	petFoorDispenser.elf
+   8268	     20	   1732	  10020	   2724	petFoorDispenser.elf
+ 
+13:29:23 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/main.c
+Building file: ../Core/Src/servo.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/servo.d" -MT"Core/Src/servo.o" -o "Core/Src/servo.o" "../Core/Src/servo.c"
+Finished building: ../Core/Src/servo.c
+ 
+Finished building: ../Core/Src/main.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+   8268	     20	   1732	  10020	   2724	petFoorDispenser.elf
+ 
+13:32:45 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/it.c
+Building file: ../Core/Src/main.c
+Building file: ../Core/Src/servo.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/it.d" -MT"Core/Src/it.o" -o "Core/Src/it.o" "../Core/Src/it.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/servo.d" -MT"Core/Src/servo.o" -o "Core/Src/servo.o" "../Core/Src/servo.c"
+Finished building: ../Core/Src/it.c
+ 
+Finished building: ../Core/Src/servo.c
+Finished building: ../Core/Src/main.c
+ 
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+   8268	     20	   1732	  10020	   2724	petFoorDispenser.elf
+ 
+13:33:14 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/it.c
+Building file: ../Core/Src/main.c
+Building file: ../Core/Src/servo.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/it.d" -MT"Core/Src/it.o" -o "Core/Src/it.o" "../Core/Src/it.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/servo.d" -MT"Core/Src/servo.o" -o "Core/Src/servo.o" "../Core/Src/servo.c"
+Finished building: ../Core/Src/it.c
+ 
+Finished building: ../Core/Src/servo.c
+ 
+Finished building: ../Core/Src/main.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+   8268	     20	   1732	  10020	   2724	petFoorDispenser.elf
+ 
+13:36:31 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/it.c
+Building file: ../Core/Src/main.c
+Building file: ../Core/Src/servo.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/it.d" -MT"Core/Src/it.o" -o "Core/Src/it.o" "../Core/Src/it.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/servo.d" -MT"Core/Src/servo.o" -o "Core/Src/servo.o" "../Core/Src/servo.c"
+Finished building: ../Core/Src/it.c
+ 
+Finished building: ../Core/Src/servo.c
+ 
+Finished building: ../Core/Src/main.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+   8268	     20	   1732	  10020	   2724	petFoorDispenser.elf
+ 
+13:37:31 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/it.c
+Building file: ../Core/Src/main.c
+Building file: ../Core/Src/servo.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/it.d" -MT"Core/Src/it.o" -o "Core/Src/it.o" "../Core/Src/it.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/servo.d" -MT"Core/Src/servo.o" -o "Core/Src/servo.o" "../Core/Src/servo.c"
+Finished building: ../Core/Src/it.c
+ 
+Finished building: ../Core/Src/servo.c
+Finished building: ../Core/Src/main.c
+ 
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+   8268	     20	   1732	  10020	   2724	petFoorDispenser.elf
  

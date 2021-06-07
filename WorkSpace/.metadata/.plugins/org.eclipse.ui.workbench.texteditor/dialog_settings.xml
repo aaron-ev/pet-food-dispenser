@@ -2,18 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="LCD_I2C_SLAVE_ADDRESS" key="selection"/>
+		<item value="GPIO_mode_define" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="LCD_I2C_SLAVE_ADDRESS"/>
-			<item value="I2C_MasterRequestWrite"/>
-			<item value="hi2c2"/>
-			<item value="hi2c1"/>
+			<item value="tim2PWM"/>
+			<item value="Msp"/>
+			<item value="GPIO_pull_define"/>
+			<item value="GPIO_mode_define"/>
+			<item value="GPIO_speed_define"/>
+			<item value="TIM_Output_Compare_Polarity"/>
+			<item value="TIM_Output_Compare_and_PWM_modes"/>
+			<item value="TIM_Counter_Mode"/>
 		</list>
 		<list key="replacehistory">
+			<item value="servo_tim2PWM"/>
 			<item value="hi2c1"/>
 			<item value="hi2c2"/>
 		</list>

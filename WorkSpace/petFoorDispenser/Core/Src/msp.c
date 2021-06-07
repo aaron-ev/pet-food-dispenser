@@ -18,6 +18,7 @@ void HAL_MspInit(void)
   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_0);
 }
 
+
 /**
 * @brief I2C MSP Initialization
 * This function configures the hardware resources used in this example

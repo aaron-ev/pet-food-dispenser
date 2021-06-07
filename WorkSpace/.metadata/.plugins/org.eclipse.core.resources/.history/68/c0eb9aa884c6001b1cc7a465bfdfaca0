@@ -1,0 +1,19 @@
+
+
+#include "main.h"
+#include "servo.h"
+#include "stm32f4xx_it.h"
+
+void SysTick_Handler(void)
+{
+  HAL_IncTick();
+}
+
+void EXTI1_IRQHandler(void)
+{
+	HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin);
+	servo_Write(SERVO_DEGREE_0);
+	servo_Write(SERVO_DEGREE_90);
+}
+
+
