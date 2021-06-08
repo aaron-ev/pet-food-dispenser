@@ -6,16 +6,45 @@
   *
  */
 
-#include "stm32f4xx_hal.h"
+
 #include "main.h"
 #include "lcd_i2c.h"
 #include "servo.h"
 
-void SystemClock_Config(void);
-static void MX_I2C1_Init(void);
 
-uint8_t servo_flag = 0;
+void display_screen_main()
+{
+	lcd_clear();
+	lcd_send_line("Hour",1,3);
+	lcd_send_line("-> settings",1,0);
+}
+void display_screen_settings(void)
+{
+	lcd_clear();
+	lcd_send_line("cycles",0,3);
+	lcd_send_line("speed",1,3);
+	lcd_send_line("back",0,12);
 
+}
+
+void screen_settings(void)
+{
+	display_screen_settings();
+	lcd_send_line("->",0,0);
+	while(1)
+    {
+		while(!flag_GPIO_it);
+		sum_up_down = button_up - button_down;
+		switch(sum_up_down)
+		{
+			case 0: display_screen_settings();lcd_send_line("->",0,0); break;
+			case -1:display_screen_settings();lcd_send_line("->",1,0);break;
+			case -2:display_screen_settings();lcd_send_line("->",0,10);break;
+
+		}
+		flag_GPIO_it = FALSE;
+	}
+}
 int main(void)
 {
 	int i;
@@ -25,42 +54,31 @@ int main(void)
 	GPIO_Init();
 	MX_I2C1_Init();
 	lcd_init ();
-	lcd_send_line("Hello World",1,0);
+	lcd_send_line_clr("Hello World",1,0);
 	HAL_Delay(1000);
 	servo_Init(GPIOA,GPIO_SERVO_A0);
+	display_screen_main();
 
 	while (1)
 	{
-		lcd_send_line("-> settings",1,0);
-
 		while (screen_main)
 		 {
-			if(servo_flag)
+			if(button_dispense)
 			{
 				//Message
-				lcd_send_line("serving...",1,0);
+				lcd_send_line_clr("serving...",1,0);
 				for(i = 0; i < SERVO_TIMES_TO_SERVE; i = i + 1)
 				{
 					servo_Write(SERVO_DEGREE_180);
 					servo_Write(SERVO_DEGREE_0);
-					servo_flag = 0;
+					button_dispense = 0;
 				}
-				lcd_send_line("-> settings",1,0);
+				display_screen_main();
 			}
 			else if(button_enter)
 			{
 				screen_main = FALSE;
-				screen_settings = TRUE;
-			    //Message
-			}
-			else
-
-			while(screen_settings)
-		    {
-				if(button_enter)
-				{
-					//Cycles
-				}
+				screen_settings();
 			}
 
 		}
@@ -126,23 +144,37 @@ static void MX_I2C1_Init(void)
   //GPIO Ports Clock Enable
   __HAL_RCC_GPIOA_CLK_ENABLE();
   //configure GPIO pin Output Level
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, BUTTON_DISPENSE_PIN, GPIO_PIN_RESET);
 
-  //Configure GPIO pin : PA5
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  //Configure GPIO pins
+  GPIO_InitStruct.Pin = BUTTON_DISPENSE_PIN ;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  GPIO_InitStruct.Pin = BUTTON_DOWN_PIN;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   // Interrupt settings
   HAL_NVIC_SetPriority(EXTI1_IRQn,0,15);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+  //HAL_NVIC_SetPriority(EXTI3_IRQn,0,15);
+  //HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 }
 
  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
  {
-	 servo_flag = 1;
+	 //if(HAL_GPIO_ReadPin(GPIOA,BUTTON_DISPENSE_PIN))
+			 //button_dispense = TRUE;
+	// else if(HAL_GPIO_ReadPin(GPIOA,BUTTON_DOWN_PIN))
+		// BUTTON_DOWN_PIN++;
+	 if(button_down < 3)
+	 {
+		 flag_GPIO_it = TRUE;
+		 button_down++;
+		__HAL_GPIO_EXTI_CLEAR_IT(BUTTON_DOWN_PIN);
+	 }
  }
 
 void Error_Handler(void)

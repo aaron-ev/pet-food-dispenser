@@ -90,6 +90,12 @@ void lcd_send_string (char *str)
 //Created by Aarón Escoboza Villegas
 void lcd_send_line(char *str,int row,int col)
 {
+	lcd_put_cur(row,col);
+	lcd_send_string(str);
+}
+
+void lcd_send_line_clr(char *str,int row,int col)
+{
 	lcd_clear();
 	lcd_put_cur(row,col);
 	lcd_send_string(str);

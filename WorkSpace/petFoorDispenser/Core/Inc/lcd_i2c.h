@@ -14,3 +14,4 @@ void lcd_clear (void);
 
 // Created by Aarón Escoboza Villegas
 void lcd_send_line(char *string,int row,int col);
+void lcd_send_line_clr(char *string,int row,int col);
