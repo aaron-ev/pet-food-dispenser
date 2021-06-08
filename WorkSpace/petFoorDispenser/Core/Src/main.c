@@ -11,45 +11,90 @@
 #include "lcd_i2c.h"
 #include "servo.h"
 
+#define SOURCE_BUTTON_ENTER   0
+#define SOURCE_BUTTON_DOWN    1
+#define SOURCE_BUTTON_UP	  2
+#define SOURCE_NOTHING		  4
+
+int arrow[3][2] = {{0,10},{1,0},{0,0,}}; //cyles,speed,back
+int row = 2;
+int itSource = SOURCE_NOTHING;
+int times_to_serve = 1;
 
 void display_screen_main()
 {
 	lcd_clear();
 	lcd_send_line("Hour",1,3);
-	lcd_send_line("-> settings",1,0);
+	lcd_send_line("->settings",1,0);
 }
 void display_screen_settings(void)
 {
 	lcd_clear();
-	lcd_send_line("cycles",0,3);
-	lcd_send_line("speed",1,3);
+	lcd_send_line("cycles",0,2);
+	lcd_send_line("speed",1,2);
 	lcd_send_line("back",0,12);
 
 }
-
+void screen_cycles(void)
+{
+	char cycles[2];
+	lcd_clear();
+	lcd_send_line("cycles < >",0,0);
+	itoa(times_to_serve,cycles,10);
+	lcd_send_line(cycles,0,8);
+}
 void screen_settings(void)
 {
 	display_screen_settings();
 	lcd_send_line("->",0,0);
+	screen_main = FALSE;
 	while(1)
     {
+
 		while(!flag_GPIO_it);
-		sum_up_down = button_up - button_down;
-		switch(sum_up_down)
+		switch(itSource)
 		{
-			case 0: display_screen_settings();lcd_send_line("->",0,0); break;
-			case -1:display_screen_settings();lcd_send_line("->",1,0);break;
-			case -2:display_screen_settings();lcd_send_line("->",0,10);break;
+			case SOURCE_BUTTON_ENTER : switch(0)
+										{
+											case 0: screen_cycles();break;
+											default : break;
+										}break;
+
+			case SOURCE_BUTTON_DOWN:	if(row > 0)
+										{
+											row--;
+											switch(row)
+											{
+											case 0: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											case 1: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											case 2: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											default :break;
+											}
+
+										}break;
+			case SOURCE_BUTTON_UP:	if(row < 3)
+										{
+											row++;
+											switch(row)
+											{
+											case 0: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											case 1: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											case 2: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											default :break;
+											}
+
+										}break;
+			default:  break;
 
 		}
-		flag_GPIO_it = FALSE;
+		flag_GPIO_it = 0;
 	}
 }
 int main(void)
 {
 	int i;
 	HAL_Init();
-	HAL_Delay(250);
+	//HAL_Delay(250);
 	SystemClock_Config();
 	GPIO_Init();
 	MX_I2C1_Init();
@@ -67,7 +112,7 @@ int main(void)
 			{
 				//Message
 				lcd_send_line_clr("serving...",1,0);
-				for(i = 0; i < SERVO_TIMES_TO_SERVE; i = i + 1)
+				for(i = 0; i < times_to_serve; i = i + 1)
 				{
 					servo_Write(SERVO_DEGREE_180);
 					servo_Write(SERVO_DEGREE_0);
@@ -77,7 +122,7 @@ int main(void)
 			}
 			else if(button_enter)
 			{
-				screen_main = FALSE;
+				button_enter = 0;
 				screen_settings();
 			}
 
@@ -143,26 +188,35 @@ static void MX_I2C1_Init(void)
 
   //GPIO Ports Clock Enable
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
   //configure GPIO pin Output Level
-  HAL_GPIO_WritePin(GPIOA, BUTTON_DISPENSE_PIN, GPIO_PIN_RESET);
+  //HAL_GPIO_WritePin(GPIOA, BUTTON_DISPENSE_PIN, GPIO_PIN_RESET);
 
   //Configure GPIO pins
-  GPIO_InitStruct.Pin = BUTTON_DISPENSE_PIN ;
+  GPIO_InitStruct.Pin = BUTTON_DISPENSE_PIN | BUTTON_ENTER_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  GPIO_InitStruct.Pin = BUTTON_DOWN_PIN;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = BUTTON_UP_PIN | BUTTON_DOWN_PIN;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   // Interrupt settings
-  HAL_NVIC_SetPriority(EXTI1_IRQn,0,15);
-  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
-  //HAL_NVIC_SetPriority(EXTI3_IRQn,0,15);
-  //HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+  //HAL_NVIC_SetPriority(EXTI1_IRQn,0,15);
+  //HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI2_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI3_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 }
 
+ /*
  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
  {
 	 //if(HAL_GPIO_ReadPin(GPIOA,BUTTON_DISPENSE_PIN))
@@ -176,7 +230,7 @@ static void MX_I2C1_Init(void)
 		__HAL_GPIO_EXTI_CLEAR_IT(BUTTON_DOWN_PIN);
 	 }
  }
-
+*/
 void Error_Handler(void)
 {
   __disable_irq();

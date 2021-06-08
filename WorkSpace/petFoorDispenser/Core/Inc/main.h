@@ -24,8 +24,8 @@ extern "C" {
 
 #define BUTTON_DISPENSE_PIN 	GPIO_PIN_1
 #define BUTTON_ENTER_PIN 		GPIO_PIN_10
-#define BUTTON_UP_PIN 		    GPIO_PIN_2
-#define BUTTON_DOWN_PIN 		GPIO_PIN_3
+#define BUTTON_UP_PIN 		    GPIO_PIN_3
+#define BUTTON_DOWN_PIN 		GPIO_PIN_2
 
 
 I2C_HandleTypeDef hi2c1;
@@ -33,13 +33,14 @@ I2C_HandleTypeDef hi2c1;
 void GPIO_Init(void);
 void Error_Handler(void);
 
+
 typedef enum
 {
 	FALSE,
 	TRUE
 }bool;
 
-bool button_enter = TRUE;
+bool button_enter = FALSE;
 bool button_dispense = 0;
 int8_t button_up = 0;
 int8_t button_down = 0;
