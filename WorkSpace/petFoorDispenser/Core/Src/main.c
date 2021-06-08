@@ -25,33 +25,27 @@ int main(void)
 	GPIO_Init();
 	MX_I2C1_Init();
 	lcd_init ();
-
-	lcd_clear();
-	lcd_put_cur(1,0);
-
-	lcd_send_string ("Hello World");
+	lcd_send_line("Hello World",1,0);
 	HAL_Delay(1000);
 	servo_Init(GPIOA,GPIO_SERVO_A0);
+
 	while (1)
 	{
-		lcd_clear();
-		lcd_put_cur(1,0);
-		lcd_send_string ("-> Settings");
+		lcd_send_line("-> settings",1,0);
+
 		while (screen_main)
 		 {
 			if(servo_flag)
 			{
 				//Message
-				lcd_clear();
-				lcd_put_cur(1,0);
-				lcd_send_string ("Serving...");
+				lcd_send_line("serving...",1,0);
 				for(i = 0; i < SERVO_TIMES_TO_SERVE; i = i + 1)
 				{
 					servo_Write(SERVO_DEGREE_180);
 					servo_Write(SERVO_DEGREE_0);
 					servo_flag = 0;
 				}
-
+				lcd_send_line("-> settings",1,0);
 			}
 			else if(button_enter)
 			{

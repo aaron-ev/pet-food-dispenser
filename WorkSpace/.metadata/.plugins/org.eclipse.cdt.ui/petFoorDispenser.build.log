@@ -1,23 +1,6 @@
-16:46:07 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+16:58:07 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-   8312	     24	   1736	  10072	   2758	petFoorDispenser.elf
- 
+make: Nothing to be done for 'all'.
 
-16:46:08 Build Finished (took 1s.422ms)
+16:58:08 Build Finished (took 366ms)
 
