@@ -8,16 +8,18 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="button_dispense"/>
+			<item value="main_screen"/>
+			<item value="screen_main"/>
 			<item value="flag_dispense"/>
 			<item value="servo_flag"/>
 			<item value="tim2PWM"/>
 			<item value="Msp"/>
 			<item value="GPIO_pull_define"/>
-			<item value="GPIO_mode_define"/>
-			<item value="GPIO_speed_define"/>
-			<item value="TIM_Output_Compare_Polarity"/>
 		</list>
 		<list key="replacehistory">
+			<item value="screen_main"/>
+			<item value="main_screen"/>
 			<item value="button_dispense"/>
 			<item value="flag_dispense"/>
 			<item value="servo_tim2PWM"/>

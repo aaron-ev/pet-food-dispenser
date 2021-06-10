@@ -47,6 +47,9 @@ int8_t button_down = 0;
 int8_t sum_up_down = 0;
 
 bool screen_main = TRUE;
+bool screen_settings = FALSE;
+bool screen_cycles = FALSE;
+
 bool flag_GPIO_it = FALSE;
 bool flag_button = FALSE;
 void SystemClock_Config(void);

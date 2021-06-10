@@ -10,7 +10,7 @@ extern bool flag_GPIO_it;
 extern int itSource;
 extern bool button_enter;
 extern bool screen_main;
-
+extern bool button_dispense;
 #define SOURCE_BUTTON_ENTER   0
 #define SOURCE_BUTTON_DOWN    1
 #define SOURCE_BUTTON_UP	  2
@@ -19,17 +19,10 @@ void SysTick_Handler(void)
 {
   HAL_IncTick();
 }
-
+//dispense
 void EXTI1_IRQHandler(void)
 {
-	itSource = 0;
-	button_enter = TRUE;
-	 if(button_down < 3)
-	 {
-		 if(!screen_main)
-			 flag_GPIO_it = TRUE;
-		 button_down++;
-	 }
+	button_dispense = TRUE;
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
 }
 //down
