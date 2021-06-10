@@ -2,7 +2,7 @@
 #include "servo.h"
 
 TIM_HandleTypeDef tim2PWM = {0};
-
+int servo_delay = 200; // ms
 void servo_Init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
 
@@ -47,10 +47,10 @@ void servo_Write(uint8_t degrees)
 	switch (degrees)
 	{
 		case SERVO_DEGREE_0: __HAL_TIM_SET_COMPARE(&tim2PWM,TIM_CHANNEL_1,SERVO_SIGNAL_2ms);
-				 	 	 	  HAL_Delay(SERVO_DELAY);
+				 	 	 	  HAL_Delay(servo_delay);
 				 	 	 	  break;
 		case SERVO_DEGREE_180: __HAL_TIM_SET_COMPARE(&tim2PWM,TIM_CHANNEL_1,SERVO_SIGNAL_0_5ms);
-							 HAL_Delay(SERVO_DELAY);
+							 HAL_Delay(servo_delay);
 							 break;
 		default : servo_Error(); break;
 	}

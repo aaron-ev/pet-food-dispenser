@@ -22,10 +22,11 @@
 #define ROW_SPEED  1
 #define ROW_BACK   0
 
-int arrow[3][2] = {{0,10},{1,0},{0,0,}}; //cyles,speed,back
-int row = 2;
+int arrow[3][2] = {{0,9},{1,0},{0,0}}; // back,speed,cycles
+int row = ROW_CYCLES;
 int itSource = SOURCE_NOTHING;
 int times_to_serve = 1;
+extern int servo_delay;
 
 void display_screen_main()
 {
@@ -38,13 +39,20 @@ void display_screen_settings(void)
 	lcd_clear();
 	lcd_send_line("cycles",0,2);
 	lcd_send_line("speed",1,2);
-	lcd_send_line("back",0,12);
+	lcd_send_line("back",0,11);
 }
 void display_screen_cycles(void)
 {
 	lcd_clear();
 	lcd_send_line("cycles < >",0,0);
 }
+
+void display_screen_speed(void)
+{
+	lcd_clear();
+	lcd_send_line("speed <    >",0,0);
+}
+
 void func_screen_cycles(void)
 {
 	char cycles[2];
@@ -52,18 +60,25 @@ void func_screen_cycles(void)
 	itoa(times_to_serve,cycles,10);
 	lcd_send_line(cycles,0,8);
 	flag_GPIO_it = FALSE;
+	screen_main = FALSE;
 	while(1)
 	{
 		while(!flag_GPIO_it);
 		switch(itSource)
 		{
-			case SOURCE_BUTTON_UP: times_to_serve++;
-								   itoa(times_to_serve,cycles,10);
-								   lcd_send_line(cycles,0,8);break;
+			case SOURCE_BUTTON_UP: if(times_to_serve < 9)
+								   {
+									   times_to_serve++;
+									   itoa(times_to_serve,cycles,10);
+									   lcd_send_line(cycles,0,8);
+								   }break;
 
-			case SOURCE_BUTTON_DOWN: times_to_serve--;
-									 itoa(times_to_serve,cycles,10);
-									 lcd_send_line(cycles,0,8);break;
+			case SOURCE_BUTTON_DOWN: if(times_to_serve > 1)
+									 {
+										times_to_serve--;
+										itoa(times_to_serve,cycles,10);
+										lcd_send_line(cycles,0,8);
+									}break;
 
 			case SOURCE_BUTTON_ENTER: button_enter = FALSE;
 									  row = ROW_CYCLES;
@@ -75,13 +90,55 @@ void func_screen_cycles(void)
 	}
 
 }
+
+void func_screen_speed(void)
+{
+	char speed[4];
+	display_screen_speed();
+	itoa(servo_delay,speed,10);
+	lcd_send_line(speed,0,7);
+	flag_GPIO_it = FALSE;
+	screen_main = FALSE;
+	while(1)
+	{
+		while(!flag_GPIO_it);
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_UP: if(servo_delay < 2000)
+									{
+									   servo_delay = servo_delay + 100;
+									   itoa(servo_delay,speed,10);
+									   display_screen_speed();
+									   lcd_send_line(speed,0,7);break;
+									}break;
+
+
+			case SOURCE_BUTTON_DOWN: if(servo_delay > 200)
+									 {
+									   servo_delay = servo_delay - 100;
+									   itoa(servo_delay,speed,10);
+									   display_screen_speed();
+									   lcd_send_line(speed,0,7);break;
+									 }break;
+
+			case SOURCE_BUTTON_ENTER: button_enter = FALSE;
+									  row = ROW_CYCLES;
+									  func_screen_main();
+									  break;
+			default: break;
+		}
+		flag_GPIO_it = FALSE;
+	}
+
+}
+
 void func_screen_settings(void)
 {
 	display_screen_settings();
 	lcd_send_line("->",0,0);
 	flag_GPIO_it = FALSE;
 	screen_main = FALSE;
-	//screen_settings = TRUE;
+
 	while(1)
     {
 
@@ -93,11 +150,10 @@ void func_screen_settings(void)
 									   switch(row)
 										{
 											case ROW_CYCLES: func_screen_cycles();break;
-											//case ROW_SPEED: button_enter = FALSE;screen_main = TRUE;func_screen_main();break;//screen_cycles();break;
+											case ROW_SPEED: func_screen_speed();break;
 											case ROW_BACK: button_enter = FALSE;
 														   row = ROW_CYCLES;
 														   func_screen_main();
-														   //screen_settings = FALSE;
 														   break;
 											default : break;
 										}break;
@@ -154,7 +210,7 @@ void func_screen_main(void)
 				}
 				else if(button_enter)
 				{
-					//button_enter = FALSE;
+					HAL_Delay(100);
 					func_screen_settings();
 				}
 
@@ -163,22 +219,22 @@ void func_screen_main(void)
 
 int main(void)
 {
-	int i;
 	HAL_Init();
-	//HAL_Delay(250);
 	SystemClock_Config();
+	HAL_Delay(250);
 	GPIO_Init();
 	MX_I2C1_Init();
 	lcd_init ();
+	servo_Init(GPIOA,GPIO_SERVO_A0);
 	lcd_send_line_clr("Food dispenser",0,0);
 	HAL_Delay(1000);
-	servo_Init(GPIOA,GPIO_SERVO_A0);
+
 	while (1)
 	{
 		func_screen_main();
 
 	}
-	}
+}
 
 void SystemClock_Config(void)
 {
@@ -250,7 +306,6 @@ static void MX_I2C1_Init(void)
   GPIO_InitStruct.Pin = BUTTON_UP_PIN | BUTTON_DOWN_PIN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  HAL_GPIO_WritePin(GPIOA,BUTTON_DISPENSE_PIN,GPIO_PIN_RESET);
   // Interrupt settings
   HAL_NVIC_SetPriority(EXTI1_IRQn,0,15);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);

@@ -22,7 +22,10 @@ void SysTick_Handler(void)
 //dispense
 void EXTI1_IRQHandler(void)
 {
-	button_dispense = TRUE;
+	if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1) == GPIO_PIN_SET && screen_main == TRUE)
+	{
+		button_dispense = TRUE;
+	}
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
 }
 //down
@@ -42,6 +45,7 @@ void EXTI3_IRQHandler(void)
 //enter
 void EXTI15_10_IRQHandler(void)
 {
+
 	button_enter = TRUE;
 	 if(!screen_main)
 	 {
@@ -50,3 +54,4 @@ void EXTI15_10_IRQHandler(void)
 	 }
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
 }
+
