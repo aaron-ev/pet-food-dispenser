@@ -1,0 +1,9 @@
+
+#ifndef IT_H
+#define IT_H
+
+#define TRUE	1
+#define FALSE !TRUE
+void SysTick_Handler(void);
+
+#endif

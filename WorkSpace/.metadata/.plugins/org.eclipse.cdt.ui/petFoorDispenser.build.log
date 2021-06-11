@@ -1,38 +1,6 @@
-01:15:10 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+23:56:42 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-../Core/Src/main.c: In function 'func_screen_cycles':
-../Core/Src/main.c:60:2: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
-  itoa(times_to_serve,cycles,10);
-  ^~~~
-../Core/Src/main.c:85:12: warning: implicit declaration of function 'func_screen_main'; did you mean 'func_screen_cycles'? [-Wimplicit-function-declaration]
-            func_screen_main();
-            ^~~~~~~~~~~~~~~~
-            func_screen_cycles
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:192:6: warning: conflicting types for 'func_screen_main'
- void func_screen_main(void)
-      ^~~~~~~~~~~~~~~~
-../Core/Src/main.c:85:12: note: previous implicit declaration of 'func_screen_main' was here
-            func_screen_main();
-            ^~~~~~~~~~~~~~~~
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-   9616	     64	   1736	  11416	   2c98	petFoorDispenser.elf
- 
+make: Nothing to be done for 'all'.
 
-01:15:12 Build Finished (took 1s.494ms)
+23:56:42 Build Finished (took 307ms)
 

@@ -2,29 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="button_dispense" key="selection"/>
+		<item value="screen_settings" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="func_screen_settings"/>
+			<item value="func_screen_speed"/>
+			<item value="func_screen_cycles"/>
+			<item value="func_screen_main"/>
+			<item value="ROW_SETTINGS"/>
 			<item value="button_dispense"/>
 			<item value="main_screen"/>
 			<item value="screen_main"/>
-			<item value="flag_dispense"/>
-			<item value="servo_flag"/>
-			<item value="tim2PWM"/>
-			<item value="Msp"/>
-			<item value="GPIO_pull_define"/>
 		</list>
 		<list key="replacehistory">
+			<item value="screen_settings"/>
+			<item value="screen_speed"/>
+			<item value="screen_cycles"/>
 			<item value="screen_main"/>
+			<item value="ROW_SETTING"/>
 			<item value="main_screen"/>
 			<item value="button_dispense"/>
 			<item value="flag_dispense"/>
-			<item value="servo_tim2PWM"/>
-			<item value="hi2c1"/>
-			<item value="hi2c2"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

@@ -1,0 +1,13 @@
+
+#ifndef IT_H
+#define IT_H
+
+typedef enum
+{
+ 	FALSE,
+ 	TRUE
+}bool;
+#define TRUE
+void SysTick_Handler(void);
+
+#endif
