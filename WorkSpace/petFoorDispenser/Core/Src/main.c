@@ -198,7 +198,7 @@ void func_screen_main(void)
 	{
 				if(button_dispense)
 				{
-					//Message
+
 					lcd_send_line_clr("serving...",1,0);
 					for(i = 0; i < times_to_serve; i = i + 1)
 					{
@@ -210,7 +210,6 @@ void func_screen_main(void)
 				}
 				else if(button_enter)
 				{
-					HAL_Delay(100);
 					func_screen_settings();
 				}
 
