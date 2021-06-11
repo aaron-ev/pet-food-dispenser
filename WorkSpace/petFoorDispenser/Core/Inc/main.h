@@ -1,26 +1,19 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
-  ******************************************************************************
- */
 
 #ifndef __MAIN_H
 #define __MAIN_H
 
 #include "stm32f4xx_hal.h"
 
+// custom data types
 typedef enum
 {
 	FALSE,
 	TRUE
 }bool;
-
-#define SOURCE_BUTTON_ENTER   0
-#define SOURCE_BUTTON_DOWN    1
-#define SOURCE_BUTTON_UP	  2
+// macros
+#define SOURCE_BUTTON_ENTER   GPIO_PIN_10
+#define SOURCE_BUTTON_DOWN    GPIO_PIN_2//1
+#define SOURCE_BUTTON_UP	  GPIO_PIN_3//2
 #define SOURCE_NOTHING		  4
 
 #define ROW_BACK   	 0
@@ -41,34 +34,35 @@ typedef enum
 #define TRUE 1
 #define FALSE 0
 
-// Global variables
+// global variables
+TIM_HandleTypeDef tim6;
 I2C_HandleTypeDef hi2c1;
 int arrow[5][2] = {{0,9},{1,0},{0,0},{1,0},{1,7}}; // back,speed,cycles,feed,setting
 int row = ROW_FEED;
 int itSource = SOURCE_NOTHING;
 int times_to_serve = 1;
 bool flag_GPIO_it = FALSE;
-
-// Extern variables
+uint16_t button_pressed;
+// extern variables
 extern int servo_delay;
 
-// Function prototypes
+// display funtions
 void display_screen_main();
 void display_screen_settings(void);
 void display_screen_cycles(void);
 void display_screen_speed(void);
-
+// screen functions
 void screen_main(void);
 void screen_cycles(void);
 void screen_speed(void);
 void screen_settings(void);
-
+// dispense functions
 void dispense(void);
-
+// init functions
 void GPIO_Init(void);
 void SystemClock_Config(void);
 static void MX_I2C1_Init(void);
-
+// error handler functions
 void Error_Handler(void);
 
 #endif

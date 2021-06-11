@@ -1,33 +1,35 @@
 #include <it.h>
 #include "stm32f4xx_hal.h"
 
-extern bool flag_GPIO_it;
-extern int itSource;
+extern TIM_TypeDef tim6;
 
 void SysTick_Handler(void)
 {
   HAL_IncTick();
 }
 
-//down
+// down
 void EXTI2_IRQHandler(void)
 {
-	flag_GPIO_it = TRUE;
-	itSource = SOURCE_BUTTON_DOWN;
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+	HAL_GPIO_EXTI_IRQHandler(SOURCE_BUTTON_DOWN);
 }
-//up
+// up
 void EXTI3_IRQHandler(void)
 {
-	flag_GPIO_it = TRUE;
-	itSource = SOURCE_BUTTON_UP;
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
+	//HAL_TIM_Base_Start_IT(&tim6);
+	//flag_GPIO_it = TRUE;
+	//itSource = SOURCE_BUTTON_UP;
+	//HAL_NVIC_DisableIRQ(EXTI3_IRQn);
+	HAL_GPIO_EXTI_IRQHandler(SOURCE_BUTTON_UP);
 }
-//enter
+// enter
 void EXTI15_10_IRQHandler(void)
 {
-	flag_GPIO_it = TRUE;
-	itSource = SOURCE_BUTTON_ENTER;
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
+	HAL_GPIO_EXTI_IRQHandler(SOURCE_BUTTON_ENTER);
 }
 
+// timer 6
+void TIM6_DAC_IRQHandler(void)
+{
+	HAL_TIM_IRQHandler(&tim6);
+}

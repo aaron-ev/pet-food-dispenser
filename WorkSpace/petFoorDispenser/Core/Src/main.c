@@ -2,22 +2,69 @@
 #include "lcd_i2c.h"
 #include "servo.h"
 
+void disable_it_buttons(void)
+{
+	HAL_NVIC_DisableIRQ(EXTI2_IRQn);
+	HAL_NVIC_DisableIRQ(EXTI3_IRQn);
+	HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+}
+void enable_it_buttons(void)
+{
+	HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+	HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+}
+void tim6_Init(void)
+{
+	__HAL_RCC_TIM6_CLK_ENABLE();
+	tim6.Instance = TIM6;
+	tim6.Init.Prescaler = 80;// clk_timeer = 100 kHz
+	tim6.Init.Period = 7000-1;//  period = 700ms
+	if(HAL_TIM_Base_Init(&tim6) != HAL_OK)
+		Error_Handler();
+
+	// Interrupt settings
+	HAL_NVIC_SetPriority(TIM6_DAC_IRQn,0,15);
+	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if(button_pressed == BUTTON_ENTER_PIN)
+	{
+		if(HAL_GPIO_ReadPin(GPIOA,button_pressed) == GPIO_PIN_RESET)
+			{
+				flag_GPIO_it = TRUE;
+				HAL_TIM_Base_Stop_IT(&tim6);
+				enable_it_buttons();
+			}
+	}
+	else
+	{
+		if(HAL_GPIO_ReadPin(GPIOB,button_pressed) == GPIO_PIN_RESET)
+		{
+			flag_GPIO_it = TRUE;
+			HAL_TIM_Base_Stop_IT(&tim6);
+			enable_it_buttons();
+		}
+	}
+	enable_it_buttons();
+}
 int main(void)
 {
 	HAL_Init();
 	SystemClock_Config();
-	HAL_Delay(250);
+	//HAL_Delay(250);
 	GPIO_Init();
 	MX_I2C1_Init();
+	tim6_Init();
 	lcd_init ();
 	servo_Init(GPIOA,GPIO_SERVO_A0);
 	lcd_send_line_clr("food dispenser",0,0);
-	HAL_Delay(1000);
+	//HAL_Delay(1000);
 
 	while (1)
 	{
 		screen_main();
-
 	}
 }
 
@@ -82,8 +129,8 @@ static void MX_I2C1_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   //Configure GPIO pins
-  GPIO_InitStruct.Pin = BUTTON_ENTER_PIN; //| BUTTON_DISPENSE_PIN
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pin = BUTTON_ENTER_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -218,8 +265,7 @@ void screen_settings(void)
 		while(!flag_GPIO_it);
 		switch(itSource)
 		{
-			case SOURCE_BUTTON_ENTER : //button_enter = FALSE;
-									   switch(row)
+			case SOURCE_BUTTON_ENTER : switch(row)
 										{
 											case ROW_CYCLES: screen_cycles();break;
 											case ROW_SPEED: screen_speed();break;
@@ -227,7 +273,7 @@ void screen_settings(void)
 											default : break;
 										}break;
 
-			case SOURCE_BUTTON_DOWN:	if(row > ROW_BACK)
+			case SOURCE_BUTTON_DOWN: if(row > ROW_BACK)
 										{
 											row--;
 											switch(row)
@@ -269,7 +315,7 @@ void screen_main(void)
 
 		switch(itSource)
 		{
-			case SOURCE_BUTTON_ENTER : //button_enter = FALSE;
+			case SOURCE_BUTTON_ENTER :
 									   switch(row)
 										{
 											case ROW_FEED: dispense();break;
@@ -304,4 +350,19 @@ void dispense(void)
 	display_screen_main();
 	lcd_send_line("->",1,0);
 
+}
+
+// Call backs
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	HAL_TIM_Base_Start_IT(&tim6);
+	disable_it_buttons();
+	button_pressed = GPIO_Pin;
+	switch (GPIO_Pin)
+		{
+			case BUTTON_ENTER_PIN : itSource = SOURCE_BUTTON_ENTER;break;
+			case BUTTON_UP_PIN : itSource = SOURCE_BUTTON_UP;break;
+			case BUTTON_DOWN_PIN : itSource = SOURCE_BUTTON_DOWN;break;
+			default : break;
+		}
 }
