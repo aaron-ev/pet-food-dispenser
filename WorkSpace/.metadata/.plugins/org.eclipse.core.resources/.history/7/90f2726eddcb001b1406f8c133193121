@@ -1,0 +1,420 @@
+#include "main.h"
+#include "lcd_i2c.h"
+#include "servo.h"
+
+RTC_HandleTypeDef rtc;
+
+void display_hour(void)
+{
+	RTC_TimeTypeDef time;
+	char hours[3];
+	char minutes[3];
+	char seconds[3];
+
+	HAL_RTC_GetTime(&rtc,&time,RTC_FORMAT_BIN);
+
+	itoa(time.Hours,hours,10);
+	itoa(time.Minutes,minutes,10);
+	itoa(time.Seconds,seconds,10);
+
+	lcd_clear();
+	lcd_send_line(hours,0,0);
+	lcd_send_line(":",0,2);
+	lcd_send_line(minutes,0,3);
+	lcd_send_line(":",0,5);
+	lcd_send_line(seconds,0,6);
+}
+void RTC_Init(void)
+{
+	rtc.Instance = RTC;
+	rtc.Init.HourFormat = RTC_HOURFORMAT_24;
+	rtc.Init.AsynchPrediv = 127;
+	rtc.Init.SynchPrediv = 255;
+	rtc.Init.OutPut = RTC_OUTPUT_DISABLE;
+	rtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_LOW;
+	rtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+
+	if(HAL_RTC_Init(&rtc) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	RTC_TimeTypeDef time;
+
+	time.Hours = 17-1;
+	time.Minutes = 10;
+	time.Seconds = 0;
+	time.TimeFormat = RTC_HOURFORMAT_24;
+
+	if(HAL_RTC_SetTime(&rtc,&time,RTC_FORMAT_BIN) != HAL_OK)
+	{
+		Error_Handler();
+	}
+}
+
+void disable_it_buttons(void)
+{
+	HAL_NVIC_DisableIRQ(EXTI2_IRQn);
+	HAL_NVIC_DisableIRQ(EXTI3_IRQn);
+	HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+}
+void enable_it_buttons(void)
+{
+	HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+	HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+}
+void tim6_Init(void)
+{
+	__HAL_RCC_TIM6_CLK_ENABLE();
+	tim6.Instance = TIM6;
+	tim6.Init.Prescaler = 80;// clk_timeer = 100 kHz
+	tim6.Init.Period = 7000-1;//  period = 700ms
+	if(HAL_TIM_Base_Init(&tim6) != HAL_OK)
+		Error_Handler();
+
+	// Interrupt settings
+	HAL_NVIC_SetPriority(TIM6_DAC_IRQn,0,15);
+	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if(button_pressed == BUTTON_ENTER_PIN)
+	{
+		if(HAL_GPIO_ReadPin(GPIOA,button_pressed) == GPIO_PIN_RESET)
+			{
+				flag_GPIO_it = TRUE;
+				HAL_TIM_Base_Stop_IT(&tim6);
+				enable_it_buttons();
+			}
+	}
+	else
+	{
+		if(HAL_GPIO_ReadPin(GPIOB,button_pressed) == GPIO_PIN_RESET)
+		{
+			flag_GPIO_it = TRUE;
+			HAL_TIM_Base_Stop_IT(&tim6);
+			enable_it_buttons();
+		}
+	}
+	enable_it_buttons();
+}
+int main(void)
+{
+	HAL_Init();
+	SystemClock_Config();
+	//HAL_Delay(250);
+	GPIO_Init();
+	MX_I2C1_Init();
+	tim6_Init();
+	lcd_init ();
+	RTC_Init();
+	servo_Init(GPIOA,GPIO_SERVO_A0);
+	lcd_send_line_clr("food dispenser",0,0);
+	//HAL_Delay(1000);
+
+	while (1)
+	{
+		screen_main();
+	}
+}
+
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+  /** Configure the main internal regulator output voltage
+  */
+  __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Initializes the CPU, AHB and APB buses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+static void MX_I2C1_Init(void)
+{
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+ void GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  //GPIO Ports Clock Enable
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  //Configure GPIO pins
+  GPIO_InitStruct.Pin = BUTTON_ENTER_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  GPIO_InitStruct.Pin = BUTTON_UP_PIN | BUTTON_DOWN_PIN;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  HAL_NVIC_SetPriority(EXTI2_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI3_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+}
+
+void Error_Handler(void)
+{
+  __disable_irq();
+  while (1)
+  {
+  }
+}
+
+// Functions to display screens
+void display_screen_main()
+{
+	lcd_clear();
+	display_hour();
+	lcd_send_line("  feed   setting",1,0);
+}
+void display_screen_settings(void)
+{
+	lcd_clear();
+	lcd_send_line("cycles",0,2);
+	lcd_send_line("speed",1,2);
+	lcd_send_line("back",0,11);
+}
+void display_screen_cycles(void)
+{
+	lcd_clear();
+	lcd_send_line("cycles < >",0,0);
+}
+void display_screen_speed(void)
+{
+	lcd_clear();
+	lcd_send_line("speed <    >",0,0);
+}
+
+// Functions to manage a screen
+void screen_cycles(void)
+{
+	char cycles[2];
+	display_screen_cycles();
+	itoa(times_to_serve,cycles,10);
+	lcd_send_line(cycles,0,8);
+	flag_GPIO_it = FALSE;
+	while(1)
+	{
+		while(!flag_GPIO_it);
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_UP: if(times_to_serve < 9)
+								   {
+									   times_to_serve++;
+									   itoa(times_to_serve,cycles,10);
+									   lcd_send_line(cycles,0,8);
+								   }break;
+
+			case SOURCE_BUTTON_DOWN: if(times_to_serve > 1)
+									 {
+										times_to_serve--;
+										itoa(times_to_serve,cycles,10);
+										lcd_send_line(cycles,0,8);
+									}break;
+
+			case SOURCE_BUTTON_ENTER:screen_main();break;
+			default: break;
+		}
+		flag_GPIO_it = FALSE;
+	}
+
+}
+
+void screen_speed(void)
+{
+	char speed[4];
+	display_screen_speed();
+	itoa(servo_delay,speed,10);
+	lcd_send_line(speed,0,7);
+	flag_GPIO_it = FALSE;
+	while(1)
+	{
+		while(!flag_GPIO_it);
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_UP: if(servo_delay < 2000)
+									{
+									   servo_delay = servo_delay + 100;
+									   itoa(servo_delay,speed,10);
+									   display_screen_speed();
+									   lcd_send_line(speed,0,7);break;
+									}break;
+
+
+			case SOURCE_BUTTON_DOWN: if(servo_delay > 200)
+									 {
+									   servo_delay = servo_delay - 100;
+									   itoa(servo_delay,speed,10);
+									   display_screen_speed();
+									   lcd_send_line(speed,0,7);break;
+									 }break;
+
+			case SOURCE_BUTTON_ENTER: screen_main();break;
+			default: break;
+		}
+		flag_GPIO_it = FALSE;
+	}
+
+}
+
+void screen_settings(void)
+{
+	display_screen_settings();
+	row = ROW_CYCLES;
+	lcd_send_line("->",arrow[row][0],arrow[row][1]);
+	flag_GPIO_it = FALSE;
+
+	while(1)
+    {
+		while(!flag_GPIO_it);
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_ENTER : switch(row)
+										{
+											case ROW_CYCLES: screen_cycles();break;
+											case ROW_SPEED: screen_speed();break;
+											case ROW_BACK: screen_main();break;
+											default : break;
+										}break;
+
+			case SOURCE_BUTTON_DOWN: if(row > ROW_BACK)
+										{
+											row--;
+											switch(row)
+											{
+												case ROW_BACK: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+												case ROW_SPEED: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+												case ROW_CYCLES: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											default :break;
+											}
+
+										}break;
+			case SOURCE_BUTTON_UP:	if(row < ROW_CYCLES)
+										{
+											row++;
+											switch(row)
+											{
+												case ROW_BACK: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+												case ROW_SPEED: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+												case ROW_CYCLES: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
+											default :break;
+											}
+
+										}break;
+			default:  break;
+
+		}
+		flag_GPIO_it = FALSE;
+	}
+}
+void screen_main(void)
+{
+	display_screen_main();
+	row = ROW_FEED;
+	lcd_send_line("->",arrow[row][0],arrow[row][1]);
+	flag_GPIO_it = FALSE;
+	while(1)
+    {
+		while(!flag_GPIO_it);
+
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_ENTER :
+									   switch(row)
+										{
+											case ROW_FEED: dispense();break;
+											case ROW_SETTING: screen_settings();break;
+											default : break;
+										}break;
+
+			case SOURCE_BUTTON_DOWN: row = ROW_SETTING;
+									 display_screen_main();
+									 lcd_send_line("->",arrow[row][0],arrow[row][1]);
+									 break;
+			case SOURCE_BUTTON_UP:	row = ROW_FEED;
+									display_screen_main();
+									lcd_send_line("->",arrow[row][0],arrow[row][1]);
+									break;
+			default: break;
+
+		}
+ 		flag_GPIO_it = FALSE;
+	}
+}
+// Function to dispense food
+void dispense(void)
+{
+	int i;
+	lcd_send_line_clr("serving...",1,0);
+	for(i = 0; i < times_to_serve; i = i + 1)
+	{
+		servo_Write(SERVO_DEGREE_180);
+		servo_Write(SERVO_DEGREE_0);
+	}
+	display_screen_main();
+	lcd_send_line("->",1,0);
+
+}
+
+// Call backs
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	display_hour();
+	HAL_TIM_Base_Start_IT(&tim6);
+	disable_it_buttons();
+	button_pressed = GPIO_Pin;
+	switch (GPIO_Pin)
+		{
+			case BUTTON_ENTER_PIN : itSource = SOURCE_BUTTON_ENTER;break;
+			case BUTTON_UP_PIN : itSource = SOURCE_BUTTON_UP;break;
+			case BUTTON_DOWN_PIN : itSource = SOURCE_BUTTON_DOWN;break;
+			default : break;
+		}
+}

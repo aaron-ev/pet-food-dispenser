@@ -3,7 +3,7 @@
 #define __MAIN_H
 
 #include "stm32f4xx_hal.h"
-
+#include "stm32f4xx_hal_rtc.h"
 // custom data types
 typedef enum
 {
@@ -11,10 +11,10 @@ typedef enum
 	TRUE
 }bool;
 // macros
-#define SOURCE_BUTTON_ENTER   GPIO_PIN_10
+#define SOURCE_BUTTON_ENTER   GPIO_PIN_5
 #define SOURCE_BUTTON_DOWN    GPIO_PIN_2//1
 #define SOURCE_BUTTON_UP	  GPIO_PIN_3//2
-#define SOURCE_NOTHING		  4
+#define SOURCE_NOTHING		  50
 
 #define ROW_BACK   	 0
 #define ROW_SPEED  	 1
@@ -22,8 +22,8 @@ typedef enum
 #define ROW_FEED 	 3
 #define ROW_SETTING  4
 
-#define BUTTON_DISPENSE_PIN 	GPIO_PIN_1
-#define BUTTON_ENTER_PIN 		GPIO_PIN_10
+//#define BUTTON_DISPENSE_PIN 	GPIO_PIN_1
+#define BUTTON_ENTER_PIN 		GPIO_PIN_5
 #define BUTTON_UP_PIN 		    GPIO_PIN_3
 #define BUTTON_DOWN_PIN 		GPIO_PIN_2
 
@@ -36,13 +36,14 @@ typedef enum
 
 // global variables
 TIM_HandleTypeDef tim6;
+TIM_HandleTypeDef tim7;
 I2C_HandleTypeDef hi2c1;
 int arrow[5][2] = {{0,9},{1,0},{0,0},{1,0},{1,7}}; // back,speed,cycles,feed,setting
 int row = ROW_FEED;
 int itSource = SOURCE_NOTHING;
 int times_to_serve = 1;
 bool flag_GPIO_it = FALSE;
-uint16_t button_pressed;
+uint16_t button_pressed = SOURCE_NOTHING;
 // extern variables
 extern int servo_delay;
 
@@ -62,7 +63,10 @@ void dispense(void);
 void GPIO_Init(void);
 void SystemClock_Config(void);
 static void MX_I2C1_Init(void);
+void RTC_Init(void);
 // error handler functions
 void Error_Handler(void);
+// RTC functions
+void set_time(void);
 
 #endif

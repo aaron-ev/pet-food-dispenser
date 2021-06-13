@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="C:\Ac6\SystemWorkbench" version="1.8.0_151">
+<bootpath>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\resources.jar"/>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\rt.jar"/>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\sunrsasign.jar"/>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\jsse.jar"/>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\jce.jar"/>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\charsets.jar"/>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\jfr.jar"/>
+<entry path="C:\Ac6\SystemWorkbench\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Ac6\SystemWorkbench\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

@@ -1,12 +1,12 @@
-16:57:10 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+13:28:36 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-../Core/Src/main.c: In function 'screen_cycles':
-../Core/Src/main.c:189:2: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
-  itoa(times_to_serve,cycles,10);
+../Core/Src/main.c: In function 'display_hour':
+../Core/Src/main.c:17:2: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+  itoa(time.Hours,hours,10);
   ^~~~
 Finished building: ../Core/Src/main.c
  
@@ -20,8 +20,8 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  15308	     76	   1804	  17188	   4324	petFoorDispenser.elf
+  18580	     80	   1904	  20564	   5054	petFoorDispenser.elf
  
 
-16:57:12 Build Finished (took 1s.944ms)
+13:28:37 Build Finished (took 1s.447ms)
 

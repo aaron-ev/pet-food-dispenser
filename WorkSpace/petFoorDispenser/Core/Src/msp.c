@@ -72,3 +72,28 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
 
 }
 
+void HAL_RTC_MspInit(RTC_HandleTypeDef* hrtc)
+{
+
+	// 1. clk settings (LSE ON)
+	RCC_OscInitTypeDef osc_config;
+	RCC_PeriphCLKInitTypeDef periphCLK_init;
+
+	osc_config.OscillatorType = RCC_OSCILLATORTYPE_LSE;
+	osc_config.LSEState = RCC_LSE_ON;
+	//osc_config.PLL.PLLState = RCC_PLL_NONE;
+	if(HAL_RCC_OscConfig(&osc_config) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	periphCLK_init.PeriphClockSelection = RCC_PERIPHCLK_RTC;
+	periphCLK_init.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+	if(HAL_RCCEx_PeriphCLKConfig(&periphCLK_init) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	__HAL_RCC_RTC_ENABLE();
+
+}
+

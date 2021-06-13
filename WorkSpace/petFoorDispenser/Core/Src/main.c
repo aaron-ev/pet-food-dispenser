@@ -2,6 +2,57 @@
 #include "lcd_i2c.h"
 #include "servo.h"
 
+RTC_HandleTypeDef rtc;
+bool flag_screen_main = TRUE;
+
+void display_hour(void)
+{
+	RTC_TimeTypeDef time;
+	char hours[3];
+	char minutes[3];
+	char seconds[3];
+
+	HAL_RTC_GetTime(&rtc,&time,RTC_FORMAT_BIN);
+
+	itoa(time.Hours,hours,10);
+	itoa(time.Minutes,minutes,10);
+	itoa(time.Seconds,seconds,10);
+
+	//lcd_clear();
+	lcd_send_line(hours,0,0);
+	lcd_send_line(":",0,2);
+	lcd_send_line(minutes,0,3);
+	lcd_send_line(":",0,5);
+	lcd_send_line(seconds,0,6);
+}
+void RTC_Init(void)
+{
+	rtc.Instance = RTC;
+	rtc.Init.HourFormat = RTC_HOURFORMAT_24;
+	rtc.Init.AsynchPrediv = 127;
+	rtc.Init.SynchPrediv = 255;
+	rtc.Init.OutPut = RTC_OUTPUT_DISABLE;
+	rtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_LOW;
+	rtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+
+	if(HAL_RTC_Init(&rtc) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	RTC_TimeTypeDef time;
+
+	time.Hours = 17-1;
+	time.Minutes = 10;
+	time.Seconds = 0;
+	time.TimeFormat = RTC_HOURFORMAT_24;
+
+	if(HAL_RTC_SetTime(&rtc,&time,RTC_FORMAT_BIN) != HAL_OK)
+	{
+		Error_Handler();
+	}
+}
+
 void disable_it_buttons(void)
 {
 	HAL_NVIC_DisableIRQ(EXTI2_IRQn);
@@ -27,24 +78,39 @@ void tim6_Init(void)
 	HAL_NVIC_SetPriority(TIM6_DAC_IRQn,0,15);
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
 }
+
+void tim7_Init(void)
+{
+	__HAL_RCC_TIM7_CLK_ENABLE();
+	tim7.Instance = TIM7;
+	tim7.Init.Prescaler = 8000;// clk_timeer = 100 kHz
+	tim7.Init.Period = 1000-1;//  period = 700ms
+	if(HAL_TIM_Base_Init(&tim7) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	// Interrupt settings
+	HAL_NVIC_SetPriority(TIM7_IRQn,0,15);
+	HAL_NVIC_EnableIRQ(TIM7_IRQn);
+}
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if(button_pressed == BUTTON_ENTER_PIN)
+	if (htim->Instance == TIM7)
 	{
-		if(HAL_GPIO_ReadPin(GPIOA,button_pressed) == GPIO_PIN_RESET)
-			{
-				flag_GPIO_it = TRUE;
-				HAL_TIM_Base_Stop_IT(&tim6);
-				enable_it_buttons();
-			}
+		if(flag_screen_main == TRUE)
+			display_hour();
 	}
 	else
 	{
-		if(HAL_GPIO_ReadPin(GPIOB,button_pressed) == GPIO_PIN_RESET)
+		if(button_pressed != SOURCE_NOTHING)
 		{
-			flag_GPIO_it = TRUE;
-			HAL_TIM_Base_Stop_IT(&tim6);
-			enable_it_buttons();
+			if(HAL_GPIO_ReadPin(GPIOB,button_pressed) == GPIO_PIN_RESET)
+					{
+						flag_GPIO_it = TRUE;
+						HAL_TIM_Base_Stop_IT(&tim6);
+						enable_it_buttons();
+					}
 		}
 	}
 	enable_it_buttons();
@@ -55,15 +121,18 @@ int main(void)
 	SystemClock_Config();
 	//HAL_Delay(250);
 	GPIO_Init();
-	MX_I2C1_Init();
-	tim6_Init();
-	lcd_init ();
 	servo_Init(GPIOA,GPIO_SERVO_A0);
+	MX_I2C1_Init();
+	lcd_init ();
+	tim6_Init();
+	tim7_Init();
+	RTC_Init();
 	lcd_send_line_clr("food dispenser",0,0);
 	//HAL_Delay(1000);
 
 	while (1)
 	{
+		HAL_TIM_Base_Start_IT(&tim7);
 		screen_main();
 	}
 }
@@ -129,13 +198,10 @@ static void MX_I2C1_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   //Configure GPIO pins
-  GPIO_InitStruct.Pin = BUTTON_ENTER_PIN;
+  GPIO_InitStruct.Pin = BUTTON_ENTER_PIN | BUTTON_UP_PIN | BUTTON_DOWN_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  GPIO_InitStruct.Pin = BUTTON_UP_PIN | BUTTON_DOWN_PIN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   HAL_NVIC_SetPriority(EXTI2_IRQn,0,15);
@@ -144,8 +210,8 @@ static void MX_I2C1_Init(void)
   HAL_NVIC_SetPriority(EXTI3_IRQn,0,15);
   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI15_10_IRQn,0,15);
-  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 }
 
 void Error_Handler(void)
@@ -160,8 +226,9 @@ void Error_Handler(void)
 void display_screen_main()
 {
 	lcd_clear();
-	lcd_send_line("dispenser",0,0);
+	display_hour();
 	lcd_send_line("  feed   setting",1,0);
+	flag_screen_main = TRUE;
 }
 void display_screen_settings(void)
 {
@@ -184,6 +251,7 @@ void display_screen_speed(void)
 // Functions to manage a screen
 void screen_cycles(void)
 {
+	flag_screen_main = FALSE;
 	char cycles[2];
 	display_screen_cycles();
 	itoa(times_to_serve,cycles,10);
@@ -218,6 +286,7 @@ void screen_cycles(void)
 
 void screen_speed(void)
 {
+	flag_screen_main = FALSE;
 	char speed[4];
 	display_screen_speed();
 	itoa(servo_delay,speed,10);
@@ -255,6 +324,7 @@ void screen_speed(void)
 
 void screen_settings(void)
 {
+	flag_screen_main = FALSE;
 	display_screen_settings();
 	row = ROW_CYCLES;
 	lcd_send_line("->",arrow[row][0],arrow[row][1]);
@@ -324,11 +394,13 @@ void screen_main(void)
 										}break;
 
 			case SOURCE_BUTTON_DOWN: row = ROW_SETTING;
-									 display_screen_main();
+									 //display_screen_main();
+			 	 	 	 	 	 	 lcd_send_line("  ",1,0);
 									 lcd_send_line("->",arrow[row][0],arrow[row][1]);
 									 break;
 			case SOURCE_BUTTON_UP:	row = ROW_FEED;
-									display_screen_main();
+									//display_screen_main();
+			 	 	 	 	 	 	lcd_send_line("  ",1,7);
 									lcd_send_line("->",arrow[row][0],arrow[row][1]);
 									break;
 			default: break;
@@ -340,6 +412,7 @@ void screen_main(void)
 // Function to dispense food
 void dispense(void)
 {
+	flag_screen_main = FALSE;
 	int i;
 	lcd_send_line_clr("serving...",1,0);
 	for(i = 0; i < times_to_serve; i = i + 1)

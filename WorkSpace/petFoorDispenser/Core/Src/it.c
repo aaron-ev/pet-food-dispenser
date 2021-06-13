@@ -2,6 +2,7 @@
 #include "stm32f4xx_hal.h"
 
 extern TIM_TypeDef tim6;
+extern TIM_TypeDef tim7;
 
 void SysTick_Handler(void)
 {
@@ -23,7 +24,7 @@ void EXTI3_IRQHandler(void)
 	HAL_GPIO_EXTI_IRQHandler(SOURCE_BUTTON_UP);
 }
 // enter
-void EXTI15_10_IRQHandler(void)
+void EXTI9_5_IRQHandler(void)
 {
 	HAL_GPIO_EXTI_IRQHandler(SOURCE_BUTTON_ENTER);
 }
@@ -32,4 +33,8 @@ void EXTI15_10_IRQHandler(void)
 void TIM6_DAC_IRQHandler(void)
 {
 	HAL_TIM_IRQHandler(&tim6);
+}
+void TIM7_IRQHandler(void)
+{
+	HAL_TIM_IRQHandler(&tim7);
 }

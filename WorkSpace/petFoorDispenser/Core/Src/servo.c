@@ -3,6 +3,7 @@
 
 TIM_HandleTypeDef tim2PWM = {0};
 int servo_delay = 200; // ms
+
 void servo_Init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
 
