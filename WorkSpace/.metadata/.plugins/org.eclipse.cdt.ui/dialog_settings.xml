@@ -14,6 +14,10 @@
 		<item value="1053" key="size.width"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
+		<item value="628" key="size.height"/>
+		<item value="171" key="location.y"/>
+		<item value="678" key="size.width"/>
+		<item value="413" key="location.x"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>

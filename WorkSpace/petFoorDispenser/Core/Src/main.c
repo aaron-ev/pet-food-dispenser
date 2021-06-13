@@ -19,10 +19,13 @@ void display_hour(void)
 	itoa(time.Seconds,seconds,10);
 
 	//lcd_clear();
+	lcd_send_line("  ",0,0);
 	lcd_send_line(hours,0,0);
 	lcd_send_line(":",0,2);
+	lcd_send_line("  ",0,3);
 	lcd_send_line(minutes,0,3);
 	lcd_send_line(":",0,5);
+	lcd_send_line("  ",0,6);
 	lcd_send_line(seconds,0,6);
 }
 void RTC_Init(void)

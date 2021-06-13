@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="IRQ" key="selection"/>
+		<item value="display_screen_main" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="handler"/>
-			<item value="TIM6"/>
-			<item value="TIM_Counter_Mode"/>
-			<item value="func_screen_settings"/>
-			<item value="func_screen_speed"/>
-			<item value="func_screen_cycles"/>
-			<item value="func_screen_main"/>
-			<item value="ROW_SETTINGS"/>
+			<item value="RTC_AM_PM_Definitions"/>
+			<item value="RTC_AM_PM_DefinitionsRTC_AM_PM_Definitions"/>
+			<item value="RCC_RTC_Clock_Source"/>
+			<item value="RCCEx_Periph_Clock_Selection"/>
+			<item value="RCC_System_Clock_Type"/>
+			<item value="RCC_Oscillator_Type"/>
+			<item value="rtc"/>
+			<item value="HAL_RTC_MODULE_ENABLED"/>
 		</list>
 		<list key="replacehistory">
 			<item value="screen_settings"/>
