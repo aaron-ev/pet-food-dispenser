@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="LexicalSortingAction.sort" value="false"/>
-	<item key="LastUsedSourceTemplate" value="Default C source template"/>
+	<item value="false" key="LexicalSortingAction.sort"/>
+	<item value="Default C source template" key="LastUsedSourceTemplate"/>
 	<section name="org.eclipse.cdt.ui.OPEN_ACTION_SELECTION_DIALOG_SECTION">
-		<item key="DIALOG_WIDTH" value="398"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
-		<item key="DIALOG_HEIGHT" value="438"/>
-		<item key="DIALOG_X_ORIGIN" value="706"/>
-		<item key="DIALOG_Y_ORIGIN" value="147"/>
+		<item value="398" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="438" key="DIALOG_HEIGHT"/>
+		<item value="706" key="DIALOG_X_ORIGIN"/>
+		<item value="147" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration.internal">
-		<item key="size.height" value="204"/>
-		<item key="size.width" value="1053"/>
+		<item value="204" key="size.height"/>
+		<item value="1053" key="size.width"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
-		<item key="size.height" value="628"/>
-		<item key="location.y" value="171"/>
-		<item key="size.width" value="678"/>
-		<item key="location.x" value="413"/>
+		<item value="628" key="size.height"/>
+		<item value="171" key="location.y"/>
+		<item value="678" key="size.width"/>
+		<item value="413" key="location.x"/>
+	</section>
+	<section name="PDOMSearchPage">
 	</section>
 	<section name="completion_proposal_size">
 	</section>

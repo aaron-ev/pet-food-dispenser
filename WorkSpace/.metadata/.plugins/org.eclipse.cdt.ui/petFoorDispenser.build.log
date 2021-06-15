@@ -1,9 +1,16 @@
-10:49:11 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+23:20:03 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
+ /* function:
+  
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
+ /*
+  
 Finished building: ../Core/Src/main.c
  
 Building target: petFoorDispenser.elf
@@ -16,8 +23,8 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  30760	    160	   2936	  33856	   8440	petFoorDispenser.elf
+  31248	    168	   2936	  34352	   8630	petFoorDispenser.elf
  
 
-10:49:12 Build Finished (took 1s.686ms)
+23:20:05 Build Finished (took 1s.687ms)
 
