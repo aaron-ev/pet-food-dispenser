@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="display_screen_main" key="selection"/>
+		<item value="row" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="row"/>
 			<item value="RTC_AM_PM_Definitions"/>
 			<item value="RTC_AM_PM_DefinitionsRTC_AM_PM_Definitions"/>
 			<item value="RCC_RTC_Clock_Source"/>
@@ -15,9 +16,9 @@
 			<item value="RCC_System_Clock_Type"/>
 			<item value="RCC_Oscillator_Type"/>
 			<item value="rtc"/>
-			<item value="HAL_RTC_MODULE_ENABLED"/>
 		</list>
 		<list key="replacehistory">
+			<item value="arrow_row"/>
 			<item value="screen_settings"/>
 			<item value="screen_speed"/>
 			<item value="screen_cycles"/>
@@ -25,7 +26,6 @@
 			<item value="ROW_SETTING"/>
 			<item value="main_screen"/>
 			<item value="button_dispense"/>
-			<item value="flag_dispense"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

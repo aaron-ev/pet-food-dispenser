@@ -4,29 +4,35 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/fonts.c \
 ../Core/Src/it.c \
 ../Core/Src/lcd_i2c.c \
 ../Core/Src/main.c \
 ../Core/Src/msp.c \
 ../Core/Src/servo.c \
+../Core/Src/ssd1306.c \
 ../Core/Src/syscalls.c \
 ../Core/Src/system_stm32f4xx.c 
 
 OBJS += \
+./Core/Src/fonts.o \
 ./Core/Src/it.o \
 ./Core/Src/lcd_i2c.o \
 ./Core/Src/main.o \
 ./Core/Src/msp.o \
 ./Core/Src/servo.o \
+./Core/Src/ssd1306.o \
 ./Core/Src/syscalls.o \
 ./Core/Src/system_stm32f4xx.o 
 
 C_DEPS += \
+./Core/Src/fonts.d \
 ./Core/Src/it.d \
 ./Core/Src/lcd_i2c.d \
 ./Core/Src/main.d \
 ./Core/Src/msp.d \
 ./Core/Src/servo.d \
+./Core/Src/ssd1306.d \
 ./Core/Src/syscalls.d \
 ./Core/Src/system_stm32f4xx.d 
 

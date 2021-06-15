@@ -2,8 +2,338 @@
 #include "lcd_i2c.h"
 #include "servo.h"
 
-RTC_HandleTypeDef rtc;
-bool flag_screen_main = TRUE;
+int main(void)
+{
+	HAL_Init();
+	SystemClock_Config();
+	GPIO_Init();
+	servo_Init(GPIOA,GPIO_SERVO_A0);
+	MX_I2C1_Init();
+	//HAL_Delay(100);
+	SSD1306_Init();
+	tim6_Init();
+	tim7_Init();
+	RTC_Init();
+
+	while (1)
+	{
+		HAL_TIM_Base_Start_IT(&tim7);
+		screen_main();
+	}
+}
+
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+  /** Configure the main internal regulator output voltage
+  */
+  __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Initializes the CPU, AHB and APB buses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+static void MX_I2C1_Init(void)
+{
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 350000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+ void GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  //GPIO Ports Clock Enable
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  //Configure GPIO pins
+  GPIO_InitStruct.Pin = BUTTON_ENTER_PIN | BUTTON_UP_PIN | BUTTON_DOWN_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  // down
+  HAL_NVIC_SetPriority(EXTI2_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+  // up
+  HAL_NVIC_SetPriority(EXTI1_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+  // enter
+  HAL_NVIC_SetPriority(EXTI0_IRQn,0,15);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+}
+
+void Error_Handler(void)
+{
+  __disable_irq();
+  while (1)
+  {
+  }
+}
+
+// Functions to display screens
+void display_screen_main()
+{
+	oled_clear();
+	display_hour();
+	oled_send_line("->feed",arrow[ROW_FEED][0]-22,arrow[ROW_FEED][1],&Font_11x18);
+	oled_send_line("settings",arrow[ROW_SETTING][0],arrow[ROW_SETTING][1],&Font_11x18);
+	arrow_row = ROW_FEED;
+	HAL_NVIC_EnableIRQ(TIM7_IRQn); // Enable hour update
+}
+void display_screen_settings(void)
+{
+	oled_clear();
+	oled_send_line("cycles",arrow[ROW_CYCLES][0],arrow[ROW_CYCLES][1],&Font_11x18);
+	oled_send_line("speed",arrow[ROW_SPEED][0],arrow[ROW_SPEED][1],&Font_11x18);
+	oled_send_line("back",arrow[ROW_BACK][0],arrow[ROW_BACK][1],&Font_11x18);
+}
+void display_screen_cycles(void)
+{
+	oled_clear();
+	oled_send_line("cycles",arrow[ROW_CENTER][0],arrow[ROW_CENTER][1],&Font_11x18);
+	oled_send_line("<  >",arrow[ROW_CENTER][0],arrow[ROW_CENTER][1]+20,&Font_11x18);
+}
+void display_screen_speed(void)
+{
+	oled_clear();
+	oled_send_line("speed",arrow[ROW_CENTER][0],arrow[ROW_CENTER][1],&Font_11x18);
+	oled_send_line("<   >",arrow[ROW_CENTER][0],arrow[ROW_CENTER][1]+20,&Font_11x18);
+}
+
+// Functions to manage a screen
+void screen_cycles(void)
+{
+	char cycles[2];
+	//flag_screen_main = FALSE;
+	display_screen_cycles();
+	itoa(times_to_serve,cycles,10);
+	oled_send_line(cycles,arrow[ROW_CENTER][0]+ 12,arrow[ROW_CENTER][1]+20,&Font_11x18);
+	flag_GPIO_it = FALSE;
+	while(1)
+	{
+		while(!flag_GPIO_it);
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_UP: if(times_to_serve < 9)
+								   {
+									   times_to_serve++;
+									   itoa(times_to_serve,cycles,10);
+									   oled_send_line(cycles,arrow[ROW_CENTER][0]+ 12,arrow[ROW_CENTER][1]+20,&Font_11x18);
+								   }break;
+
+			case SOURCE_BUTTON_DOWN: if(times_to_serve > 1)
+									 {
+										times_to_serve--;
+										itoa(times_to_serve,cycles,10);
+										oled_send_line(cycles,arrow[ROW_CENTER][0]+ 12,arrow[ROW_CENTER][1]+20,&Font_11x18);
+									}break;
+
+			case SOURCE_BUTTON_ENTER:screen_main();break;
+			default: break;
+		}
+		itSource = SOURCE_NOTHING;
+		flag_GPIO_it = FALSE;
+	}
+
+}
+
+void screen_speed(void)
+{
+	char speed[4];
+	//flag_screen_main = FALSE;
+	display_screen_speed();
+	itoa(servo_delay,speed,10);
+	oled_send_line(speed,arrow[ROW_CENTER][0]+ 12,arrow[ROW_CENTER][1]+20,&Font_11x18);
+	flag_GPIO_it = FALSE;
+
+	while(1)
+	{
+		while(!flag_GPIO_it);
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_UP: if(servo_delay < 2000)
+									{
+									   servo_delay = servo_delay + 100;
+									   itoa(servo_delay,speed,10);
+									   oled_send_line(speed,arrow[ROW_CENTER][0]+ 12,arrow[ROW_CENTER][1]+20,&Font_11x18);
+									   break;
+									}break;
+
+
+			case SOURCE_BUTTON_DOWN: if(servo_delay > 200)
+									 {
+									   servo_delay = servo_delay - 100;
+									   itoa(servo_delay,speed,10);
+									   oled_send_line(speed,arrow[ROW_CENTER][0]+ 12,arrow[ROW_CENTER][1]+20,&Font_11x18);
+									   break;
+									 }break;
+
+			case SOURCE_BUTTON_ENTER: screen_main();break;
+			default: break;
+		}
+		itSource = SOURCE_NOTHING;
+		flag_GPIO_it = FALSE;
+	}
+
+}
+
+void screen_settings(void)
+{
+	HAL_NVIC_DisableIRQ(TIM7_IRQn);
+	display_screen_settings();
+	arrow_row = ROW_CYCLES;
+	oled_send_line("->",arrow[arrow_row][0]-22,arrow[arrow_row][1],&Font_11x18);
+	flag_GPIO_it = FALSE;
+
+	while(1)
+    {
+		while(!flag_GPIO_it);
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_ENTER : switch(arrow_row)
+										{
+											case ROW_CYCLES: screen_cycles();break;
+											case ROW_SPEED: screen_speed();break;
+											case ROW_BACK: screen_main();break;
+											default : break;
+										}break;
+
+			case SOURCE_BUTTON_DOWN: if(arrow_row > ROW_BACK)
+										{
+											arrow_row--;
+											oled_send_line("  ",arrow[ROW_BACK][0]-22,arrow[ROW_BACK][1],&Font_11x18);
+											oled_send_line("  ",arrow[ROW_SPEED][0]-22,arrow[ROW_SPEED][1],&Font_11x18);
+											oled_send_line("  ",arrow[ROW_CYCLES][0]-22,arrow[ROW_CYCLES][1],&Font_11x18);
+											switch(arrow_row)
+											{
+												case ROW_BACK:oled_send_line("->",arrow[ROW_BACK][0]-22,arrow[ROW_BACK][1],&Font_11x18);break;
+												case ROW_SPEED: oled_send_line("->",arrow[ROW_SPEED][0]-22,arrow[ROW_SPEED][1],&Font_11x18);break;
+												case ROW_CYCLES: oled_send_line("->",arrow[ROW_CYCLES][0]-22,arrow[ROW_CYCLES][1],&Font_11x18);break;
+											default :break;
+											}
+
+										}break;
+			case SOURCE_BUTTON_UP:	if(arrow_row < ROW_CYCLES)
+										{
+											arrow_row++;
+											oled_send_line("  ",arrow[ROW_BACK][0]-22,arrow[ROW_BACK][1],&Font_11x18);
+											oled_send_line("  ",arrow[ROW_SPEED][0]-22,arrow[ROW_SPEED][1],&Font_11x18);
+											oled_send_line("  ",arrow[ROW_CYCLES][0]-22,arrow[ROW_CYCLES][1],&Font_11x18);
+											switch(arrow_row)
+											{
+												case ROW_BACK:oled_send_line("->",arrow[ROW_BACK][0]-22,arrow[ROW_BACK][1],&Font_11x18);break;
+												case ROW_SPEED: oled_send_line("->",arrow[ROW_SPEED][0]-22,arrow[ROW_SPEED][1],&Font_11x18);break;
+												case ROW_CYCLES: oled_send_line("->",arrow[ROW_CYCLES][0]-22,arrow[ROW_CYCLES][1],&Font_11x18);break;
+											default :break;
+											}
+
+										}break;
+			default:  break;
+
+		}
+		itSource = SOURCE_NOTHING;
+		flag_GPIO_it = FALSE;
+	}
+}
+void screen_main(void)
+{
+	display_screen_main();
+	flag_GPIO_it = FALSE;
+	while(1)
+    {
+		while(!flag_GPIO_it);
+
+		switch(itSource)
+		{
+			case SOURCE_BUTTON_ENTER :
+										if(arrow_row == ROW_FEED)
+											dispense();
+										else if(arrow_row == ROW_SETTING)
+											screen_settings();
+										else
+											break;
+										break;
+			case SOURCE_BUTTON_DOWN: arrow_row = ROW_SETTING;
+									 oled_send_line("  ",arrow[ROW_FEED][0]-22,arrow[ROW_FEED][1],&Font_11x18);
+									 oled_send_line("->",arrow[arrow_row][0]-22,arrow[arrow_row][1],&Font_11x18);
+									 break;
+			case SOURCE_BUTTON_UP:	arrow_row = ROW_FEED;
+									oled_send_line("  ",arrow[ROW_SETTING][0]-22,arrow[ROW_SETTING][1],&Font_11x18);
+									oled_send_line("->",arrow[arrow_row][0]-22,arrow[arrow_row][1],&Font_11x18);
+									break;
+			default: break;
+
+		}
+		itSource = SOURCE_NOTHING;
+ 		flag_GPIO_it = FALSE;
+	}
+}
+// Function to dispense food
+void dispense(void)
+{
+	int i;
+	HAL_NVIC_DisableIRQ(TIM7_IRQn); // to not update hour
+	oled_send_line_clr("serving",arrow[ROW_SERVING][0],arrow[ROW_SERVING][1],&Font_11x18);
+	for(i = 0; i < times_to_serve; i = i + 1)
+	{
+		servo_Write(SERVO_DEGREE_180);
+		servo_Write(SERVO_DEGREE_0);
+	}
+	screen_main();
+}
+
+// Call backs
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	flag_GPIO_it = TRUE;
+	//HAL_TIM_Base_Start_IT(&tim6);
+	//disable_it_buttons();
+	button_pressed = GPIO_Pin;
+	switch (GPIO_Pin)
+		{
+			case BUTTON_ENTER_PIN : itSource = SOURCE_BUTTON_ENTER;break;
+			case BUTTON_UP_PIN : itSource = SOURCE_BUTTON_UP;break;
+			case BUTTON_DOWN_PIN : itSource = SOURCE_BUTTON_DOWN;break;
+			default : break;
+		}
+}
 
 void display_hour(void)
 {
@@ -18,15 +348,31 @@ void display_hour(void)
 	itoa(time.Minutes,minutes,10);
 	itoa(time.Seconds,seconds,10);
 
-	//lcd_clear();
-	lcd_send_line("  ",0,0);
-	lcd_send_line(hours,0,0);
-	lcd_send_line(":",0,2);
-	lcd_send_line("  ",0,3);
-	lcd_send_line(minutes,0,3);
-	lcd_send_line(":",0,5);
-	lcd_send_line("  ",0,6);
-	lcd_send_line(seconds,0,6);
+	if(time.Hours > 9)
+		oled_send_line(hours,hourxy[0][0],hourxy[0][1],&Font_11x18);
+	else
+	{
+		oled_send_line(" ",hourxy[0][0],hourxy[0][1],&Font_11x18);
+		oled_send_line(hours,hourxy[0][0] + 11,hourxy[0][1],&Font_11x18);
+	}
+	oled_send_line(":",hourxy[1][0],hourxy[1][1],&Font_11x18);
+
+	if(time.Minutes > 9)
+		oled_send_line(minutes,hourxy[2][0],hourxy[2][1],&Font_11x18);
+	else
+	{
+		oled_send_line(" ",hourxy[2][0],hourxy[2][1],&Font_11x18);
+		oled_send_line(minutes,hourxy[2][0]+11,hourxy[2][1],&Font_11x18);
+	}
+	oled_send_line(":",hourxy[3][0],hourxy[3][1],&Font_11x18);
+
+	if(time.Seconds > 9)
+		oled_send_line(seconds,hourxy[4][0],hourxy[4][1],&Font_11x18);
+	else
+	{
+		oled_send_line(" ",hourxy[4][0],hourxy[4][1],&Font_11x18);
+		oled_send_line(seconds,hourxy[4][0]+11,hourxy[4][1],&Font_11x18);
+	}
 }
 void RTC_Init(void)
 {
@@ -45,8 +391,8 @@ void RTC_Init(void)
 
 	RTC_TimeTypeDef time;
 
-	time.Hours = 17-1;
-	time.Minutes = 10;
+	time.Hours = 20-1;
+	time.Minutes = 0;
 	time.Seconds = 0;
 	time.TimeFormat = RTC_HOURFORMAT_24;
 
@@ -101,344 +447,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM7)
 	{
-		if(flag_screen_main == TRUE)
-			display_hour();
+		display_hour();
 	}
 	else
 	{
-		if(button_pressed != SOURCE_NOTHING)
-		{
-			if(HAL_GPIO_ReadPin(GPIOB,button_pressed) == GPIO_PIN_RESET)
-					{
-						flag_GPIO_it = TRUE;
-						HAL_TIM_Base_Stop_IT(&tim6);
-						enable_it_buttons();
-					}
-		}
+		//if(button_pressed != SOURCE_NOTHING)
+		//{
+			//if(HAL_GPIO_ReadPin(GPIOB,button_pressed) == GPIO_PIN_RESET)
+					//{
+						//flag_GPIO_it = TRUE;
+						//HAL_TIM_Base_Stop_IT(&tim6);
+						//enable_it_buttons();
+					//}
+		//}
 	}
-	enable_it_buttons();
-}
-int main(void)
-{
-	HAL_Init();
-	SystemClock_Config();
-	//HAL_Delay(250);
-	GPIO_Init();
-	servo_Init(GPIOA,GPIO_SERVO_A0);
-	MX_I2C1_Init();
-	lcd_init ();
-	tim6_Init();
-	tim7_Init();
-	RTC_Init();
-	lcd_send_line_clr("food dispenser",0,0);
-	//HAL_Delay(1000);
-
-	while (1)
-	{
-		HAL_TIM_Base_Start_IT(&tim7);
-		screen_main();
-	}
+	//enable_it_buttons();
 }
 
-void SystemClock_Config(void)
-{
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-
-  /** Configure the main internal regulator output voltage
-  */
-  __HAL_RCC_PWR_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
-
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-static void MX_I2C1_Init(void)
-{
-  hi2c1.Instance = I2C1;
-  hi2c1.Init.ClockSpeed = 100000;
-  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
-  hi2c1.Init.OwnAddress1 = 0;
-  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  hi2c1.Init.OwnAddress2 = 0;
-  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
- void GPIO_Init(void)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  //GPIO Ports Clock Enable
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-
-  //Configure GPIO pins
-  GPIO_InitStruct.Pin = BUTTON_ENTER_PIN | BUTTON_UP_PIN | BUTTON_DOWN_PIN;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  HAL_NVIC_SetPriority(EXTI2_IRQn,0,15);
-  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
-
-  HAL_NVIC_SetPriority(EXTI3_IRQn,0,15);
-  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
-
-  HAL_NVIC_SetPriority(EXTI9_5_IRQn,0,15);
-  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
-}
-
-void Error_Handler(void)
-{
-  __disable_irq();
-  while (1)
-  {
-  }
-}
-
-// Functions to display screens
-void display_screen_main()
-{
-	lcd_clear();
-	display_hour();
-	lcd_send_line("  feed   setting",1,0);
-	flag_screen_main = TRUE;
-}
-void display_screen_settings(void)
-{
-	lcd_clear();
-	lcd_send_line("cycles",0,2);
-	lcd_send_line("speed",1,2);
-	lcd_send_line("back",0,11);
-}
-void display_screen_cycles(void)
-{
-	lcd_clear();
-	lcd_send_line("cycles < >",0,0);
-}
-void display_screen_speed(void)
-{
-	lcd_clear();
-	lcd_send_line("speed <    >",0,0);
-}
-
-// Functions to manage a screen
-void screen_cycles(void)
-{
-	flag_screen_main = FALSE;
-	char cycles[2];
-	display_screen_cycles();
-	itoa(times_to_serve,cycles,10);
-	lcd_send_line(cycles,0,8);
-	flag_GPIO_it = FALSE;
-	while(1)
-	{
-		while(!flag_GPIO_it);
-		switch(itSource)
-		{
-			case SOURCE_BUTTON_UP: if(times_to_serve < 9)
-								   {
-									   times_to_serve++;
-									   itoa(times_to_serve,cycles,10);
-									   lcd_send_line(cycles,0,8);
-								   }break;
-
-			case SOURCE_BUTTON_DOWN: if(times_to_serve > 1)
-									 {
-										times_to_serve--;
-										itoa(times_to_serve,cycles,10);
-										lcd_send_line(cycles,0,8);
-									}break;
-
-			case SOURCE_BUTTON_ENTER:screen_main();break;
-			default: break;
-		}
-		flag_GPIO_it = FALSE;
-	}
-
-}
-
-void screen_speed(void)
-{
-	flag_screen_main = FALSE;
-	char speed[4];
-	display_screen_speed();
-	itoa(servo_delay,speed,10);
-	lcd_send_line(speed,0,7);
-	flag_GPIO_it = FALSE;
-	while(1)
-	{
-		while(!flag_GPIO_it);
-		switch(itSource)
-		{
-			case SOURCE_BUTTON_UP: if(servo_delay < 2000)
-									{
-									   servo_delay = servo_delay + 100;
-									   itoa(servo_delay,speed,10);
-									   display_screen_speed();
-									   lcd_send_line(speed,0,7);break;
-									}break;
-
-
-			case SOURCE_BUTTON_DOWN: if(servo_delay > 200)
-									 {
-									   servo_delay = servo_delay - 100;
-									   itoa(servo_delay,speed,10);
-									   display_screen_speed();
-									   lcd_send_line(speed,0,7);break;
-									 }break;
-
-			case SOURCE_BUTTON_ENTER: screen_main();break;
-			default: break;
-		}
-		flag_GPIO_it = FALSE;
-	}
-
-}
-
-void screen_settings(void)
-{
-	flag_screen_main = FALSE;
-	display_screen_settings();
-	row = ROW_CYCLES;
-	lcd_send_line("->",arrow[row][0],arrow[row][1]);
-	flag_GPIO_it = FALSE;
-
-	while(1)
-    {
-		while(!flag_GPIO_it);
-		switch(itSource)
-		{
-			case SOURCE_BUTTON_ENTER : switch(row)
-										{
-											case ROW_CYCLES: screen_cycles();break;
-											case ROW_SPEED: screen_speed();break;
-											case ROW_BACK: screen_main();break;
-											default : break;
-										}break;
-
-			case SOURCE_BUTTON_DOWN: if(row > ROW_BACK)
-										{
-											row--;
-											switch(row)
-											{
-												case ROW_BACK: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
-												case ROW_SPEED: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
-												case ROW_CYCLES: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
-											default :break;
-											}
-
-										}break;
-			case SOURCE_BUTTON_UP:	if(row < ROW_CYCLES)
-										{
-											row++;
-											switch(row)
-											{
-												case ROW_BACK: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
-												case ROW_SPEED: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
-												case ROW_CYCLES: display_screen_settings();lcd_send_line("->",arrow[row][0],arrow[row][1]);break;
-											default :break;
-											}
-
-										}break;
-			default:  break;
-
-		}
-		flag_GPIO_it = FALSE;
-	}
-}
-void screen_main(void)
-{
-	display_screen_main();
-	row = ROW_FEED;
-	lcd_send_line("->",arrow[row][0],arrow[row][1]);
-	flag_GPIO_it = FALSE;
-	while(1)
-    {
-		while(!flag_GPIO_it);
-
-		switch(itSource)
-		{
-			case SOURCE_BUTTON_ENTER :
-									   switch(row)
-										{
-											case ROW_FEED: dispense();break;
-											case ROW_SETTING: screen_settings();break;
-											default : break;
-										}break;
-
-			case SOURCE_BUTTON_DOWN: row = ROW_SETTING;
-									 //display_screen_main();
-			 	 	 	 	 	 	 lcd_send_line("  ",1,0);
-									 lcd_send_line("->",arrow[row][0],arrow[row][1]);
-									 break;
-			case SOURCE_BUTTON_UP:	row = ROW_FEED;
-									//display_screen_main();
-			 	 	 	 	 	 	lcd_send_line("  ",1,7);
-									lcd_send_line("->",arrow[row][0],arrow[row][1]);
-									break;
-			default: break;
-
-		}
- 		flag_GPIO_it = FALSE;
-	}
-}
-// Function to dispense food
-void dispense(void)
-{
-	flag_screen_main = FALSE;
-	int i;
-	lcd_send_line_clr("serving...",1,0);
-	for(i = 0; i < times_to_serve; i = i + 1)
-	{
-		servo_Write(SERVO_DEGREE_180);
-		servo_Write(SERVO_DEGREE_0);
-	}
-	display_screen_main();
-	lcd_send_line("->",1,0);
-
-}
-
-// Call backs
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-	HAL_TIM_Base_Start_IT(&tim6);
-	disable_it_buttons();
-	button_pressed = GPIO_Pin;
-	switch (GPIO_Pin)
-		{
-			case BUTTON_ENTER_PIN : itSource = SOURCE_BUTTON_ENTER;break;
-			case BUTTON_UP_PIN : itSource = SOURCE_BUTTON_UP;break;
-			case BUTTON_DOWN_PIN : itSource = SOURCE_BUTTON_DOWN;break;
-			default : break;
-		}
-}

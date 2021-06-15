@@ -1,0 +1,10 @@
+15:12:10 **** Incremental Build of configuration Debug for project foodDispenser_STM32F103C8 ****
+make -j8 all 
+arm-none-eabi-size   foodDispenser_STM32F103C8.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5228	     20	   1652	   6900	   1af4	foodDispenser_STM32F103C8.elf
+Finished building: default.size.stdout
+ 
+
+15:12:11 Build Finished. 0 errors, 0 warnings. (took 825ms)
+
