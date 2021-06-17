@@ -1,378 +1,376 @@
-20:34:01 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+13:44:22 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 make: Nothing to be done for 'all'.
-20:34:05 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+13:44:35 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 make: Nothing to be done for 'all'.
-20:34:19 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-20:36:19 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-20:37:57 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-20:41:23 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-20:43:06 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:02:45 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-../Core/Src/main.c: In function 'screen_setTime':
-../Core/Src/main.c:20:25: error: invalid initializer
-  RTC_TimeTypeDef time = 0;
-                         ^
-../Core/Src/main.c:35:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                         ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:35:30: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                              ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                   ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:24: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                        ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                  ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:23: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                       ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+Finished building: ../Core/Src/main.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+  19052	    148	   1908	  21108	   5274	petFoorDispenser.elf
+ 
+14:04:36 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: data definition has no type or storage class
+ display_screen_time();
+ ^~~~~~~~~~~~~~~~~~~
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: type defaults to 'int' in declaration of 'display_screen_time' [-Wimplicit-int]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:209:6: error: conflicting types for 'display_screen_time'
+ void display_screen_time(void)
+      ^~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: note: previous declaration of 'display_screen_time' was here
+ display_screen_time();
+ ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:437:2: warning: implicit declaration of function 'display_time'; did you mean 'display_hour'? [-Wimplicit-function-declaration]
+  display_time();
+  ^~~~~~~~~~~~
+  display_hour
+../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+Core/Src/subdir.mk:42: recipe for target 'Core/Src/main.o' failed
+make: *** [Core/Src/main.o] Error 1
+14:04:58 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: data definition has no type or storage class
+ display_screen_time(void);
+ ^~~~~~~~~~~~~~~~~~~
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: type defaults to 'int' in declaration of 'display_screen_time' [-Wimplicit-int]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:209:6: error: conflicting types for 'display_screen_time'
+ void display_screen_time(void)
+      ^~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: note: previous declaration of 'display_screen_time' was here
+ display_screen_time(void);
+ ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:437:2: warning: implicit declaration of function 'display_time'; did you mean 'display_hour'? [-Wimplicit-function-declaration]
+  display_time();
+  ^~~~~~~~~~~~
+  display_hour
+../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
 make: *** [Core/Src/main.o] Error 1
 Core/Src/subdir.mk:42: recipe for target 'Core/Src/main.o' failed
-20:43:22 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:05:20 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-../Core/Src/main.c: In function 'screen_setTime':
-../Core/Src/main.c:35:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                         ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:35:30: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                              ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                   ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:24: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                        ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                  ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:23: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                       ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h: In function 'display_screen_time':
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:273:13: error: storage class specified for parameter 'MX_I2C1_Init'
+ static void MX_I2C1_Init(void);
+             ^~~~~~~~~~~~
+../Core/Src/main.c:5:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:33:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:68:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:85:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:109:2: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  {
+  ^
+../Core/Src/main.c:137:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:151:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:167:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:176:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:186:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:204:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:210:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:215:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:222:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:298:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:328:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:393:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:433:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:496:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:563:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:577:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:583:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:590:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:602:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:610:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:639:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/main.c:647:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:6: error: old-style parameter declarations in prototyped function definition
+ void display_screen_time(void)
+      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:654:1: error: expected '{' at end of input
+ }
+ ^
+Core/Src/subdir.mk:42: recipe for target 'Core/Src/main.o' failed
+make: *** [Core/Src/main.o] Error 1
+14:05:28 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:437:2: warning: implicit declaration of function 'display_time'; did you mean 'display_hour'? [-Wimplicit-function-declaration]
+  display_time();
+  ^~~~~~~~~~~~
+  display_hour
+../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+Finished building: ../Core/Src/main.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Core/Src/main.o: In function `screen_time':
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:437: undefined reference to `display_time'
+collect2.exe: error: ld returned 1 exit status
+makefile:35: recipe for target 'petFoorDispenser.elf' failed
+make: *** [petFoorDispenser.elf] Error 1
+14:05:30 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Core/Src/main.o: In function `screen_time':
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:437: undefined reference to `display_time'
+collect2.exe: error: ld returned 1 exit status
+make: *** [petFoorDispenser.elf] Error 1
+makefile:35: recipe for target 'petFoorDispenser.elf' failed
+14:05:56 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
 Finished building: ../Core/Src/main.c
  
 Building target: petFoorDispenser.elf
@@ -385,184 +383,94 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  31104	    160	   2936	  34200	   8598	petFoorDispenser.elf
+  19052	    148	   1908	  21108	   5274	petFoorDispenser.elf
  
-20:44:16 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:14:53 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-../Core/Src/main.c: In function 'screen_setTime':
-../Core/Src/main.c:35:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                         ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:35:30: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                              ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                   ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:24: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                        ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                  ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:23: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                       ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+Finished building: ../Core/Src/main.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Core/Src/main.o: In function `screen_alarms':
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:511: undefined reference to `screen_alarmSelected'
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:512: undefined reference to `screen_alarmSelected'
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:513: undefined reference to `screen_alarmSelected'
+collect2.exe: error: ld returned 1 exit status
+makefile:35: recipe for target 'petFoorDispenser.elf' failed
+make: *** [petFoorDispenser.elf] Error 1
+14:15:30 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
 Finished building: ../Core/Src/main.c
  
 Building target: petFoorDispenser.elf
@@ -575,387 +483,48 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  31100	    160	   2936	  34196	   8594	petFoorDispenser.elf
+  19200	    148	   1908	  21256	   5308	petFoorDispenser.elf
  
-20:44:49 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-../Core/Src/main.c: In function 'screen_setTime':
-../Core/Src/main.c:35:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                         ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:35:30: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 0: itoa(hour,time.Hours,10);
-                              ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:38:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 1: itoa(minutes,time.Minutes,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:25: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                         ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:41:33: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-            case 2: itoa(seconds,time.Seconds,10);
-                                 ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                   ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:24: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                        ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                  ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:23: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                       ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31100	    160	   2936	  34196	   8594	petFoorDispenser.elf
- 
-20:46:10 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-../Core/Src/main.c: In function 'screen_setTime':
-../Core/Src/main.c:52:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                   ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:52:24: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(hour,time.Hours,10);
-                        ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:57:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(minutes,time.Minutes,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:19: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                   ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:61:27: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-              itoa(seconds,time.Seconds,10);
-                           ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                  ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:70:23: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(hour,time.Hours,10);
-                       ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:75:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(minutes,time.Minutes,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:18: warning: passing argument 1 of 'itoa' makes integer from pointer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                  ^~~~~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'int' but argument is of type 'char *'
- char * itoa (int, char *, int);
-        ^~~~
-../Core/Src/main.c:79:26: warning: passing argument 2 of 'itoa' makes pointer from integer without a cast [-Wint-conversion]
-             itoa(seconds,time.Seconds,10);
-                          ^~~~
-In file included from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/ssd1306.h:52:0,
-                 from C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:8,
-                 from ../Core/Src/main.c:1:
-c:\ac6\systemworkbench\plugins\fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825\tools\compiler\arm-none-eabi\include\stdlib.h:224:8: note: expected 'char *' but argument is of type 'uint8_t {aka unsigned char}'
- char * itoa (int, char *, int);
-        ^~~~
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31100	    160	   2936	  34196	   8594	petFoorDispenser.elf
- 
-20:48:13 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  30944	    160	   2936	  34040	   84f8	petFoorDispenser.elf
- 
-20:49:22 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:16:27 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 make: Nothing to be done for 'all'.
-21:33:16 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:17:43 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-../Core/Src/main.c: In function 'screen_setTime':
-../Core/Src/main.c:30:7: warning: unused variable 'seconds' [-Wunused-variable]
-  char seconds[3];
-       ^~~~~~~
-../Core/Src/main.c:29:7: warning: unused variable 'minutes' [-Wunused-variable]
-  char minutes[3];
-       ^~~~~~~
-../Core/Src/main.c:28:7: warning: unused variable 'hour' [-Wunused-variable]
-  char hour[3];
-       ^~~~
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
 Finished building: ../Core/Src/main.c
  
 Building target: petFoorDispenser.elf
@@ -968,21 +537,45 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  30804	    160	   2936	  33900	   846c	petFoorDispenser.elf
+  19200	    148	   1908	  21256	   5308	petFoorDispenser.elf
  
-21:38:31 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:19:43 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
 Finished building: ../Core/Src/main.c
  
 Building target: petFoorDispenser.elf
@@ -995,21 +588,45 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  30764	    160	   2936	  33860	   8444	petFoorDispenser.elf
+  19200	    148	   1908	  21256	   5308	petFoorDispenser.elf
  
-21:39:05 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:21:40 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
 Finished building: ../Core/Src/main.c
  
 Building target: petFoorDispenser.elf
@@ -1022,21 +639,45 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  30780	    160	   2936	  33876	   8454	petFoorDispenser.elf
+  19232	    148	   1908	  21288	   5328	petFoorDispenser.elf
  
-21:44:40 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:23:07 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_t menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
 Finished building: ../Core/Src/main.c
  
 Building target: petFoorDispenser.elf
@@ -1049,778 +690,5 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  30776	    160	   2936	  33872	   8450	petFoorDispenser.elf
- 
-21:48:56 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  30780	    160	   2936	  33876	   8454	petFoorDispenser.elf
- 
-21:53:30 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  30904	    160	   2936	  34000	   84d0	petFoorDispenser.elf
- 
-22:14:47 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  30756	    160	   2936	  33852	   843c	petFoorDispenser.elf
- 
-22:17:07 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-22:17:47 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:119:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:121:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  30764	    160	   2936	  33860	   8444	petFoorDispenser.elf
- 
-22:31:52 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31276	    168	   2936	  34380	   864c	petFoorDispenser.elf
- 
-22:34:03 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31276	    168	   2936	  34380	   864c	petFoorDispenser.elf
- 
-22:36:50 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-22:38:28 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-22:40:39 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-22:41:47 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31268	    168	   2936	  34372	   8644	petFoorDispenser.elf
- 
-22:47:35 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31284	    168	   2936	  34388	   8654	petFoorDispenser.elf
- 
-22:47:41 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31284	    168	   2936	  34388	   8654	petFoorDispenser.elf
- 
-22:52:58 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:67:1: warning: braces around scalar initializer
- int arrow[8][2] = {{{33,40},33,20},{33,20},{33,0},{33,21},{33,41},{10,40},{20,20}}; // back,time,speed,cycles,feed,setting,serving,center
- ^~~
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:67:1: note: (near initialization for 'arrow[0][0]')
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:67:25: warning: excess elements in scalar initializer
- int arrow[8][2] = {{{33,40},33,20},{33,20},{33,0},{33,21},{33,41},{10,40},{20,20}}; // back,time,speed,cycles,feed,setting,serving,center
-                         ^~
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:67:25: note: (near initialization for 'arrow[0][0]')
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:67:32: warning: excess elements in array initializer
- int arrow[8][2] = {{{33,40},33,20},{33,20},{33,0},{33,21},{33,41},{10,40},{20,20}}; // back,time,speed,cycles,feed,setting,serving,center
-                                ^~
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:67:32: note: (near initialization for 'arrow[0]')
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31276	    168	   2936	  34380	   864c	petFoorDispenser.elf
- 
-22:54:22 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31276	    168	   2936	  34380	   864c	petFoorDispenser.elf
- 
-22:55:48 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31276	    168	   2936	  34380	   864c	petFoorDispenser.elf
- 
-22:57:07 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31276	    168	   2936	  34380	   864c	petFoorDispenser.elf
- 
-22:57:40 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31284	    168	   2936	  34388	   8654	petFoorDispenser.elf
- 
-22:58:29 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31284	    168	   2936	  34388	   8654	petFoorDispenser.elf
- 
-23:00:12 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31248	    168	   2936	  34352	   8630	petFoorDispenser.elf
- 
-23:01:26 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31248	    168	   2936	  34352	   8630	petFoorDispenser.elf
- 
-23:02:02 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31208	    168	   2936	  34312	   8608	petFoorDispenser.elf
- 
-23:09:41 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-23:10:43 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-23:14:27 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-23:14:34 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-23:15:21 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-23:15:29 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-23:17:09 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31260	    168	   2936	  34364	   863c	petFoorDispenser.elf
- 
-23:20:03 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:120:1: warning: "/*" within comment [-Wcomment]
- /* function:
-  
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:122:1: warning: "/*" within comment [-Wcomment]
- /*
-  
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  31248	    168	   2936	  34352	   8630	petFoorDispenser.elf
+  19256	    148	   1908	  21312	   5340	petFoorDispenser.elf
  

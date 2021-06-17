@@ -304,6 +304,7 @@ void SSD1306_Clear (void);
  */
 
 void oled_send_line(char *str,uint16_t x, uint16_t y,FontDef_t* font);
+void oled_send_line_test(char *str,uint16_t *xy);
 void oled_send_line_clr(char *str,uint16_t x, uint16_t y,FontDef_t* font);
 void oled_clear(void);
 /* C++ detection */

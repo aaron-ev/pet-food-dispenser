@@ -164,7 +164,7 @@ void SSD1306_DrawBitmap(int16_t x, int16_t y, const unsigned char* bitmap, int16
 uint8_t SSD1306_Init(void) {
 
 	/* Init I2C */
-	ssd1306_I2C_Init();
+	//ssd1306_I2C_Init();
 	
 	/* Check if LCD connected to I2C */
 	if (HAL_I2C_IsDeviceReady(&hi2c1, SSD1306_I2C_ADDR, 1, 20000) != HAL_OK) {
@@ -224,7 +224,7 @@ uint8_t SSD1306_Init(void) {
 	SSD1306.Initialized = 1;
 	
 	/* Return OK */
-	return 1;
+	return HAL_OK;
 }
 
 void SSD1306_UpdateScreen(void) {
@@ -664,6 +664,13 @@ void oled_send_line(char *str,uint16_t x, uint16_t y,FontDef_t* font)
 {
 	SSD1306_GotoXY(x,y);
 	SSD1306_Puts(str,font,SSD1306_COLOR_WHITE);
+	SSD1306_UpdateScreen();
+}
+
+void oled_send_line_test(char *str,uint16_t *xy)
+{
+	SSD1306_GotoXY(xy[0],xy[1]);
+	SSD1306_Puts(str,&Font_11x18,SSD1306_COLOR_WHITE);
 	SSD1306_UpdateScreen();
 }
 

@@ -100,3 +100,17 @@ void lcd_send_line_clr(char *str,int row,int col)
 	lcd_put_cur(row,col);
 	lcd_send_string(str);
 }
+void screen_send_line(char *str,uint16_t *xy)
+{
+	lcd_put_cur(xy[0],xy[1]);
+	lcd_send_string(str);
+}
+void screen_clear(void)
+{
+	lcd_clear();
+}
+
+void screen_init(void)
+{
+	lcd_init();
+}

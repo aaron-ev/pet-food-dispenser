@@ -1,0 +1,202 @@
+
+#ifndef __MAIN_H
+#define __MAIN_H
+
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_rtc.h"
+#include "fonts.h"
+#include "ssd1306.h"
+// custom data types
+typedef enum
+{
+	FALSE,
+	TRUE
+}bool;
+// macros
+#define LCD_2X16 1
+//#define OLED 0
+#define SOURCE_BUTTON_ENTER   GPIO_PIN_0
+#define SOURCE_BUTTON_DOWN    GPIO_PIN_2
+#define SOURCE_BUTTON_UP	  GPIO_PIN_1
+#define SOURCE_NOTHING		  50
+
+
+#define ROW_SPEED  	 0
+#define ROW_TIME	 1
+#define ROW_ALARMS 	 2
+#define ROW_BACK   	 3
+
+#define ROW_ALARM1 	 0
+#define ROW_ALARM2 	 1
+#define ROW_ALARM3 	 2
+
+//#define ROW_CYCLES 	 4
+#define ROW_FEED 	 4
+#define ROW_SETTING  5
+#define ROW_SERVING  6
+#define ROW_CENTER	 7
+
+
+#define BUTTON_ENTER_PIN 		GPIO_PIN_0
+#define BUTTON_UP_PIN 		    GPIO_PIN_1
+#define BUTTON_DOWN_PIN 		GPIO_PIN_2
+
+#define SWO_Pin GPIO_PIN_3
+#define SWO_GPIO_Port GPIOB
+#define GPIO_SERVO_A0 GPIO_PIN_0
+
+#define TRUE 1
+#define FALSE 0
+
+// global variables
+TIM_HandleTypeDef tim6;
+TIM_HandleTypeDef tim7;
+I2C_HandleTypeDef hi2c1;
+RTC_HandleTypeDef rtc;
+
+
+#ifdef OLED
+	#define MENU_FEED  	  	{33,21}//{33,21}
+	#define MENU_SETTINGS  	{33,41}
+	#define MENU_SPEED     	{33,0}
+	#define MENU_TIME      	{33}
+	#define MENU_ALARMS    	{33,40}
+	#define MENU_BACK      	{33,20}
+	#define MENU_CENTER      {20,20}
+	#define MENU_SERVING     {10,40}
+
+	#define ARROW_FEED  	  	{11,21}//{33,21}
+	#define ARROW_SETTINGS  	{11,41}
+	#define ARROW_SPEED     	{11,0}
+	#define ARROW_TIME      	{11}
+	#define ARROW_ALARMS    	{11,40}
+	#define ARROW_BACK      	{11,20}
+	#define ARROW_CENTER      {20,20}
+	#define ARROW_SERVING     {10,40}
+
+	//#define ARROW_ALARM1      {33,0}
+	//#define ARROW_ALARM2      {33,20}
+	//#define ARROW_ALARM3      {33,40}
+
+	#define XY_HOUR 			{20,0}
+	#define XY_MINUTES 			{55,0}
+	#define XY_SECONDS 			{55,0}
+#endif
+
+#ifdef LCD_2X16
+	#define MENU_FEED  	  	{1,2}
+	#define MENU_SETTINGS  	{1,8}
+	#define MENU_SPEED     	{33,0}
+	#define MENU_TIME      	{33}
+	#define MENU_ALARMS    	{33,40}
+	#define MENU_BACK      	{33,20}
+	#define MENU_CENTER      {20,20}
+	#define MENU_SERVING     {10,40}
+
+	#define ARROW_FEED  	  	{11,21}
+	#define ARROW_SETTINGS  	{11,41}
+	#define ARROW_SPEED     	{11,0}
+	#define ARROW_TIME      	{11}
+	#define ARROW_ALARMS    	{11,40}
+	#define ARROW_BACK      	{11,20}
+	#define ARROW_CENTER      {20,20}
+	#define ARROW_SERVING     {10,40}
+
+	//#define ARROW_ALARM1      {33,0}
+	//#define ARROW_ALARM2      {33,20}
+	//#define ARROW_ALARM3      {33,40}
+
+	#define XY_HOUR 			{0,4}
+	#define XY_MINUTES 			{0,7}
+	#define XY_SECONDS 			{0,10}
+#endif
+/////////
+/*
+ * Test
+ */
+
+typedef struct
+{
+	uint16_t feed[2];
+	uint16_t settings[2];
+	uint16_t speed[2];
+	uint16_t time[2];
+	uint16_t alarms[2];
+	uint16_t back[2];
+	uint16_t serving[2];
+	uint16_t center[2];
+}menu_s;
+
+typedef struct
+{
+	uint16_t hour[2];
+	uint16_t
+}
+typedef struct
+{
+	uint16_t feed[2];
+	uint16_t settings[2];
+	uint16_t speed[2];
+	uint16_t time[2];
+	uint16_t alarms[2];
+	uint16_t back[2];
+}arrow_t;
+
+menu_s menu = {MENU_FEED,MENU_SETTINGS,
+                 MENU_SPEED,MENU_TIME,
+                 MENU_ALARMS,MENU_BACK,
+                 MENU_SERVING,MENU_CENTER
+                };
+arrow_t arrow_test ={ARROW_FEED,ARROW_SETTINGS,
+					ARROW_SPEED,ARROW_TIME,
+					ARROW_ALARMS,ARROW_BACK,
+				    };
+int arrow[8][2] = {ARROW_SPEED,ARROW_TIME,
+				   ARROW_ALARMS,ARROW_BACK,
+				   ARROW_FEED,ARROW_SETTINGS,
+				   ARROW_SERVING,ARROW_CENTER};
+
+int hourxy[3][2] = {XY_HOUR,XY_MINUTES,XY_SECONDS};
+//int hourDot[2][2] = {{43,0},{78,0}};
+int hourDot[2][2] = {{0,6},{0,9}};
+
+int	arrow_row = ROW_FEED;
+int itSource = SOURCE_NOTHING;
+int times_to_serve = 1;
+bool flag_GPIO_it = FALSE;
+uint16_t button_pressed = SOURCE_NOTHING;
+// extern variables
+extern int servo_delay;
+
+// display funtions
+void display_screen_main();
+void display_screen_settings(void);
+void display_screen_cycles(void);
+void display_screen_speed(void);
+void display_screen_alarms(void);
+void display_hour(void);
+// screen functions
+void screen_main(void);
+void screen_cycles(void);
+void screen_speed(void);
+void screen_settings(void);
+void screen_alarms(void);
+// dispense functions
+void dispense(void);
+// init functions
+void GPIO_Init(void);
+void SystemClock_Config(void);
+static void MX_I2C1_Init(void);
+void RTC_Init(void);
+void tim6_Init(void);
+void tim7_Init(void);
+// error handler functions
+void Error_Handler(void);
+// RTC functions
+void set_time(RTC_TimeTypeDef *time);
+
+// enable and disable buttons
+void enable_it_buttons(void);
+void disable_it_buttons(void);
+
+#endif
