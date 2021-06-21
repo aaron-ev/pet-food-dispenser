@@ -1,5 +1,54 @@
 #include "main.h"
+#include "lcd1602_i2c.h"
 
+void buzzer_init(void)
+{
+
+}
+
+void update_alarmTime(alarmTime *alarmTimex)
+{
+	char hour[3];
+	char minutes[3];
+
+	if(alarmTimex->number != ALARM_NONE)
+	{
+		switch(alarmTimex->number)
+		{
+		case ALARM1:alarm1.hour = alarmTimex->hour;
+					alarm1.minutes = alarmTimex->minutes;
+					break;
+		case ALARM2:alarm2.hour = alarmTimex->hour;
+					alarm2.minutes = alarmTimex->minutes;
+					break;
+		case ALARM3:alarm3.hour = alarmTimex->hour;
+					alarm3.minutes = alarmTimex->minutes;
+					break;
+		default:break;
+		}
+
+	}
+
+	itoa(alarmTimex->hour,hour,10);
+	itoa(alarmTimex->minutes,minutes,10);
+
+	if(alarmTimex->hour > 9)
+		screen_send_line(hour,timexy.hour_two_digits);
+	else
+	{
+		screen_send_line("  ",timexy.hour_one_digit);
+		screen_send_line(hour,timexy.hour_one_digit);
+	}
+	screen_send_line(":",timexy.colon);
+
+	if(alarmTimex->minutes > 9)
+		screen_send_line(minutes,timexy.minutes_zero);
+	else
+	{
+		screen_send_line("0",timexy.minutes_zero);
+		screen_send_line(minutes,timexy.minutes);
+	}
+}
 
 int main(void)
 {
@@ -8,16 +57,9 @@ int main(void)
 	GPIO_Init();
 	servo_Init(GPIOA,GPIO_SERVO_A0);
 	MX_I2C1_Init();
-	HAL_Delay(100);
 	screen_init();
 	screen_send_line("Hello World",menu.feed.screenxy);
-	//if(SSD1306_Init() != HAL_OK)
-	//{
-	//	Error_Handler();
-	//}
-	//oled_send_line_test("Food",menu.center);
-	//oled_send_line("Food",20,10,&Font_11x18);
-	HAL_Delay(200);
+	HAL_Delay(500);
 	//tim6_Init();
 	tim7_Init();
 	RTC_Init();
@@ -122,10 +164,9 @@ void RTC_Init(void)
 
  	RTC_TimeTypeDef time;
 
- 	time.Hours = 0;
- 	time.Minutes = 0;
- 	time.Seconds = 0;
- 	time.TimeFormat = RTC_HOURFORMAT_24;
+ 	time.Hours = 23;
+ 	time.Minutes = 59;
+ 	//time.TimeFormat = RTC_HOURFORMAT_24;
 
  	if(HAL_RTC_SetTime(&rtc,&time,RTC_FORMAT_BIN) != HAL_OK)
  	{
@@ -214,9 +255,9 @@ void display_screen_time(void)
 void display_screen_alarms(void)
 {
 	screen_clear();
-	screen_send_line("alarm1",menu.alarm1.screenxy);
-	screen_send_line("alarm2",menu.alarm2.screenxy);
-	screen_send_line("alarm3",menu.alarm3.screenxy);
+	screen_send_line("1.A1",menu.alarm1.screenxy);
+	screen_send_line("2.A2",menu.alarm2.screenxy);
+	screen_send_line("3.A3",menu.alarm3.screenxy);
 	screen_send_line("back",menu.back.screenxy);
 }
 void display_hour(void)
@@ -224,38 +265,27 @@ void display_hour(void)
 	RTC_TimeTypeDef time;
 	char hours[3];
 	char minutes[3];
-	char seconds[3];
 
 	HAL_RTC_GetTime(&rtc,&time,RTC_FORMAT_BIN);
 
 	itoa(time.Hours,hours,10);
 	itoa(time.Minutes,minutes,10);
-	itoa(time.Seconds,seconds,10);
 
 	if(time.Hours > 9)
-		screen_send_line(hours,timexy.hour);
+		screen_send_line(hours,timexy.hour_two_digits);
 	else
 	{
-		screen_send_line("  ",timexy.hour);
-		screen_send_line(hours,timexy.hour);
+		screen_send_line("  ",timexy.hour_two_digits);
+		screen_send_line(hours,timexy.hour_one_digit);
 	}
-	screen_send_line(":",timexy.colon1);
+	screen_send_line(":",timexy.colon);
 
 	if(time.Minutes > 9)
-		screen_send_line(minutes,timexy.minutes);
+		screen_send_line(minutes,timexy.minutes_zero);
 	else
 	{
-		screen_send_line("  ",timexy.minutes);
+		screen_send_line("0",timexy.minutes_zero);
 		screen_send_line(minutes,timexy.minutes);
-	}
-	screen_send_line(":",timexy.colon2);
-
-	if(time.Seconds > 9)
-		screen_send_line(seconds,timexy.seconds);
-	else
-	{
-		screen_send_line("  ",timexy.seconds);
-		screen_send_line(seconds,timexy.seconds);
 	}
 }
 /*
@@ -293,6 +323,19 @@ void screen_cycles(void)
 		flag_GPIO_it = FALSE;
 	}
 
+}
+*/
+/*
+void display_screen_alarmSelected(alarmNumber alarmx)
+{
+	screen_clear();
+	switch(alarmx)
+	{
+		case ALARM1: update_alarmTime(alarm1);break;
+		case ALARM2: update_alarmTime(alarm2);break;
+		case ALARM3: update_alarmTime(alarm3);break;
+		default:     break;
+	}
 }
 */
 void screen_main(void)
@@ -340,7 +383,6 @@ void screen_settings(void)
 		{
 			case SOURCE_BUTTON_ENTER : switch(arrow_row)
 										{
-											//case ROW_CYCLES: screen_cycles();break;
 											case ROW_SPEED:  screen_speed();break;
 											case ROW_TIME:   screen_time();break;
 											case ROW_ALARMS: screen_alarms();break;
@@ -462,27 +504,11 @@ void screen_time(void)
 			    while(!flag_GPIO_it);
 				switch(itSource)
 				{
-					case SOURCE_BUTTON_DOWN: if(time.Minutes > 1) time.Minutes = time.Minutes - 1;break;
+					case SOURCE_BUTTON_DOWN: if(time.Minutes > 0) time.Minutes = time.Minutes - 1;break;
 					case SOURCE_BUTTON_UP:	if(time.Minutes < 59) time.Minutes = time.Minutes + 1;break;
 					default: break;
 				}
 				update_time(time.Minutes,2);
-				flag_GPIO_it = FALSE;
-				if (itSource == SOURCE_BUTTON_ENTER)
-					break;
-				else
-					itSource = SOURCE_NOTHING;
-			}
-		while(1)
-			{
-			    while(!flag_GPIO_it);
-				switch(itSource)
-				{
-					case SOURCE_BUTTON_DOWN: if(time.Seconds > 1) time.Seconds = time.Seconds - 1;break;
-					case SOURCE_BUTTON_UP:	if(time.Seconds < 59) time.Seconds = time.Seconds + 1;break;
-					default: break;
-				}
-				update_time(time.Seconds,3);
 				flag_GPIO_it = FALSE;
 				if (itSource == SOURCE_BUTTON_ENTER)
 					break;
@@ -556,10 +582,54 @@ void screen_alarms(void)
 		flag_GPIO_it = FALSE;
 	}
 }
-void screen_alarmSelected(alarms alarm)
+void screen_alarmSelected(alarmNumber alarmNumberx)
 {
+	alarmTime alarmTimex = {0};
+	alarmTimex.number = ALARM_NONE;
+	flag_GPIO_it = FALSE;
+	update_alarmTime(&alarmTimex);
+	itSource = SOURCE_NOTHING;
 
-}
+	while(1)
+	{
+		while(1)
+			{
+			    while(!flag_GPIO_it);
+				switch(itSource)
+				{
+					case SOURCE_BUTTON_DOWN: if(alarmTimex.hour > 1) alarmTimex.hour = alarmTimex.hour - 1;break;
+					case SOURCE_BUTTON_UP:	if(alarmTimex.hour < 23) alarmTimex.hour = alarmTimex.hour + 1;break;
+					default: break;
+			    }
+				alarmTimex.number = alarmNumberx;
+				update_alarmTime(&alarmTimex);
+				flag_GPIO_it = FALSE;
+				if (itSource == SOURCE_BUTTON_ENTER)
+					break;
+				else
+					itSource = SOURCE_NOTHING;
+			}
+		while(1)
+			{
+			    while(!flag_GPIO_it);
+				switch(itSource)
+				{
+					case SOURCE_BUTTON_DOWN: if(alarmTimex.minutes > 1) alarmTimex.minutes = alarmTimex.minutes - 1;break;
+					case SOURCE_BUTTON_UP:	if(alarmTimex.minutes < 59) alarmTimex.minutes = alarmTimex.minutes + 1;break;
+					default: break;
+				}
+				update_alarmTime(&alarmTimex);
+				flag_GPIO_it = FALSE;
+				if (itSource == SOURCE_BUTTON_ENTER)
+					break;
+				else
+					itSource = SOURCE_NOTHING;
+			}
+		//set_alarm(alarmTimex,alarmNumberx);
+		//set_time(&time);
+		screen_main();
+	}
+ }
 // Function to dispense food
 void dispense(void)
 {
@@ -614,27 +684,27 @@ void update_time(uint8_t t,uint8_t m)
 	itoa(t,time_chr,10);
 	if(m == 1)
 	{
-		screen_send_line("  ",timexy.hour);
-		screen_send_line(time_chr,timexy.hour);
+		screen_send_line("  ",timexy.hour_two_digits);
+		if(t > 9)
+			screen_send_line(time_chr,timexy.hour_two_digits);
+		else
+			screen_send_line(time_chr,timexy.hour_one_digit);
+
 	}
 	else if(m == 2)
 	{
-		screen_send_line("  ",timexy.minutes);
-		screen_send_line(time_chr,timexy.minutes);
+		screen_send_line("  ",timexy.minutes_zero);
+		if(t > 9)
+			screen_send_line(time_chr,timexy.minutes_zero);
+		else
+		{
+			screen_send_line("0",timexy.minutes_zero);
+			screen_send_line(time_chr,timexy.minutes);
+		}
 	}
     else
     {
-		screen_send_line("  ",timexy.seconds);
-		screen_send_line(time_chr,timexy.seconds);
     }
-	/*
-    }
-	screen_send_line("  ",time.Hours);
-	if(t > 9)
-		oled_send_line(time,hourxy[m][0],hourxy[m][1],&Font_11x18);
-	else
-		oled_send_line(time,hourxy[m][0]+11,hourxy[m][1],&Font_11x18);
-		*/
 }
 
 void set_time(RTC_TimeTypeDef *time)

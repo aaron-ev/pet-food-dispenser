@@ -1,0 +1,21 @@
+/*
+ * screenDriver.c
+ *
+ *  Created on: Jun 21, 2021
+ *      Author: aaron
+ */
+
+
+#include "lcd1602_i2c.h"
+void lcd_send_line(char *str,int row,int col)
+{
+	lcd_setCur(row,col);
+	lcd_writeString(str);
+}
+
+void lcd_send_line_clr(char *str,int row,int col)
+{
+	lcd_clear();
+	lcd_setCur(row,col);
+	lcd_writeString(str);
+}

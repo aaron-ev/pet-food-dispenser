@@ -1,0 +1,10 @@
+/*
+ * config.c
+ *
+ *  Created on: Jun 17, 2021
+ *      Author: aaron
+ */
+
+#include "config.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f446xx.h"

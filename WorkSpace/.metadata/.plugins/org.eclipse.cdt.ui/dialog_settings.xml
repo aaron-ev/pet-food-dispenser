@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="C:\Users\aaron\Desktop\git_driverLCD16X2\driver" key="org.eclipse.cdt.utils.ui.controls.FileListControl"/>
 	<item value="false" key="LexicalSortingAction.sort"/>
 	<item value="Default C source template" key="LastUsedSourceTemplate"/>
 	<section name="org.eclipse.cdt.ui.OPEN_ACTION_SELECTION_DIALOG_SECTION">
@@ -20,6 +21,8 @@
 		<item value="413" key="location.x"/>
 	</section>
 	<section name="PDOMSearchPage">
+	</section>
+	<section name="NewClassWizardPage">
 	</section>
 	<section name="completion_proposal_size">
 	</section>

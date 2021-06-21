@@ -1,0 +1,23 @@
+/*
+ * config.h
+ *
+ *  Created on: Jun 17, 2021
+ *      Author: aaron
+ */
+
+#ifndef INC_CONFIG_H_
+#define INC_CONFIG_H_
+
+#define BUTTON_ENTER_PIN 		GPIO_PIN_0
+#define BUTTON_UP_PIN 		    GPIO_PIN_1
+#define BUTTON_DOWN_PIN 		GPIO_PIN_2
+
+// init functions
+void GPIO_Init(void);
+void SystemClock_Config(void);
+static void MX_I2C1_Init(void);
+void RTC_Init(void);
+void tim6_Init(void);
+void tim7_Init(void);
+
+#endif /* INC_CONFIG_H_ */

@@ -1,0 +1,20 @@
+/*
+ * config.h
+ *
+ *  Created on: Jun 17, 2021
+ *      Author: aaron
+ */
+
+#ifndef INC_CONFIG_H_
+#define INC_CONFIG_H_
+
+
+// init functions
+void GPIO_Init(void);
+void SystemClock_Config(void);
+static void MX_I2C1_Init(void);
+void RTC_Init(void);
+void tim6_Init(void);
+void tim7_Init(void);
+
+#endif /* INC_CONFIG_H_ */

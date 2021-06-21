@@ -1,0 +1,53 @@
+/*
+*       Author: Aarón Escoboza Villegas
+*       Github: aaron-ev
+*
+**/
+
+#include "lcd1602_i2c.h"
+
+void lcd_writeCMD(char cmd)
+{
+    uint8_t data[4];
+    char data_upper,data_lower;  //upper nibble and lower nibble
+
+    data_lower = ((cmd << 4 )& MASK_UPPER_NIBBLE);
+    data_upper = cmd & MASK_UPPER_NIBBLE;
+
+    data[0] = data_upper | 0x0C; //add E = 1 and RS = 0
+    data[1] = data_upper | 0x08; //add E = 0 and RS = 0
+    data[2] = data_lower | 0x0C;
+    data[3] = data_lower | 0x08;
+
+    HAL_I2C_Master_Transmit(&hi2c1,LCD_ADDRESS,(uint8_t *)data,4,LCD_DELAY_100MS);
+}
+
+void lcd_init(void)
+{
+    HAL_Delay(100);
+    lcd_writeCMD(CMD_SPECIAL_FSET);
+    HAL_Delay(LCD_DELAY_5MS);
+    lcd_writeCMD(CMD_SPECIAL_FSET);
+    HAL_Delay(LCD_DELAY_1MS);
+    lcd_writeCMD(CMD_SPECIAL_FSET);
+    HAL_Delay(LCD_DELAY_1MS);
+
+    lcd_writeCMD (0x20);  // 4bit mode
+	HAL_Delay(1);
+
+
+    lcd_writeCMD(CMD_4BITMODE);
+    HAL_Delay(LCD_DELAY_1MS);
+
+    lcd_writeCMD(CMD_DISPLAY_OFF);
+    HAL_Delay(LCD_DELAY_1MS);
+    lcd_writeCMD(CMD_CLEAR);
+    HAL_Delay(LCD_DELAY_1MS);
+    lcd_writeCMD(CMD_ENTRY_MODE1);
+    HAL_Delay(LCD_DELAY_1MS);
+    lcd_writeCMD(CMD_RETURN_HOME);
+    HAL_Delay(LCD_DELAY_1MS);
+    lcd_writeCMD(CMD_DISPLAY_ON);
+    HAL_Delay(LCD_DELAY_1MS);
+}
+

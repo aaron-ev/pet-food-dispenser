@@ -1,44 +1,75 @@
-13:44:22 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+13:38:05 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
-make: Nothing to be done for 'all'.
-13:44:35 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-14:02:45 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+Building file: ../Core/Src/screenDriver.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/screenDriver.d" -MT"Core/Src/screenDriver.o" -o "Core/Src/screenDriver.o" "../Core/Src/screenDriver.c"
+../Core/Src/screenDriver.c: In function 'screen_clear':
+../Core/Src/screenDriver.c:13:2: warning: implicit declaration of function 'lcd_clear'; did you mean 'screen_clear'? [-Wimplicit-function-declaration]
+  lcd_clear();
+  ^~~~~~~~~
+  screen_clear
+Finished building: ../Core/Src/screenDriver.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+  19484	    148	   1916	  21548	   542c	petFoorDispenser.elf
+ 
+13:43:16 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_s menu = { MENU_FEED,MENU_SETTINGS,
                ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:57:2: warning: implicit declaration of function 'lcd_clear'; did you mean 'oled_clear'? [-Wimplicit-function-declaration]
+  lcd_clear();
+  ^~~~~~~~~
+  oled_clear
 ../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+../Core/Src/main.c:192:8: warning: unused variable 'a' [-Wunused-variable]
   float a = HAL_RCC_GetPCLK2Freq();
         ^
 ../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:485:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:486:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:501:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:502:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c: In function 'screen_alarmSelected':
+../Core/Src/main.c:594:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:595:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:611:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:612:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 Finished building: ../Core/Src/main.c
@@ -53,265 +84,64 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  19052	    148	   1908	  21108	   5274	petFoorDispenser.elf
+  19624	    148	   1916	  21688	   54b8	petFoorDispenser.elf
  
-14:04:36 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+13:44:39 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+  19624	    148	   1916	  21688	   54b8	petFoorDispenser.elf
+ 
+13:45:04 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_s menu = { MENU_FEED,MENU_SETTINGS,
                ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: data definition has no type or storage class
- display_screen_time();
- ^~~~~~~~~~~~~~~~~~~
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: type defaults to 'int' in declaration of 'display_screen_time' [-Wimplicit-int]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
 ../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
-  float a = HAL_RCC_GetPCLK2Freq();
-        ^
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:209:6: error: conflicting types for 'display_screen_time'
- void display_screen_time(void)
-      ^~~~~~~~~~~~~~~~~~~
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: note: previous declaration of 'display_screen_time' was here
- display_screen_time();
- ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:437:2: warning: implicit declaration of function 'display_time'; did you mean 'display_hour'? [-Wimplicit-function-declaration]
-  display_time();
-  ^~~~~~~~~~~~
-  display_hour
-../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-Core/Src/subdir.mk:42: recipe for target 'Core/Src/main.o' failed
-make: *** [Core/Src/main.o] Error 1
-14:04:58 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
-               ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: data definition has no type or storage class
- display_screen_time(void);
- ^~~~~~~~~~~~~~~~~~~
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: warning: type defaults to 'int' in declaration of 'display_screen_time' [-Wimplicit-int]
-../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
-  float a = HAL_RCC_GetPCLK2Freq();
-        ^
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:209:6: error: conflicting types for 'display_screen_time'
- void display_screen_time(void)
-      ^~~~~~~~~~~~~~~~~~~
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:1: note: previous declaration of 'display_screen_time' was here
- display_screen_time(void);
- ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:437:2: warning: implicit declaration of function 'display_time'; did you mean 'display_hour'? [-Wimplicit-function-declaration]
-  display_time();
-  ^~~~~~~~~~~~
-  display_hour
-../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-make: *** [Core/Src/main.o] Error 1
-Core/Src/subdir.mk:42: recipe for target 'Core/Src/main.o' failed
-14:05:20 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
-               ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h: In function 'display_screen_time':
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:273:13: error: storage class specified for parameter 'MX_I2C1_Init'
- static void MX_I2C1_Init(void);
-             ^~~~~~~~~~~~
-../Core/Src/main.c:5:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:33:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:68:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:85:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:109:2: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
-  {
-  ^
-../Core/Src/main.c:137:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:151:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:167:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:176:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:186:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:204:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:210:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:215:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:222:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:298:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:328:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:393:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:433:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:496:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:563:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:577:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:583:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:590:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:602:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:610:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:639:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-../Core/Src/main.c:647:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
- {
- ^
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:259:6: error: old-style parameter declarations in prototyped function definition
- void display_screen_time(void)
-      ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:654:1: error: expected '{' at end of input
- }
- ^
-Core/Src/subdir.mk:42: recipe for target 'Core/Src/main.o' failed
-make: *** [Core/Src/main.o] Error 1
-14:05:28 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
-               ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+../Core/Src/main.c:192:8: warning: unused variable 'a' [-Wunused-variable]
   float a = HAL_RCC_GetPCLK2Freq();
         ^
 ../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:437:2: warning: implicit declaration of function 'display_time'; did you mean 'display_hour'? [-Wimplicit-function-declaration]
-  display_time();
-  ^~~~~~~~~~~~
-  display_hour
-../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:485:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:486:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:501:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:502:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c: In function 'screen_alarmSelected':
+../Core/Src/main.c:594:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:595:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:611:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:612:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 Finished building: ../Core/Src/main.c
@@ -319,56 +149,162 @@ Finished building: ../Core/Src/main.c
 Building target: petFoorDispenser.elf
 Invoking: MCU GCC Linker
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Core/Src/main.o: In function `screen_time':
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:437: undefined reference to `display_time'
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+  19612	    148	   1916	  21676	   54ac	petFoorDispenser.elf
+ 
+13:47:09 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/lcd1602_i2c.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/lcd1602_i2c.d" -MT"Core/Src/lcd1602_i2c.o" -o "Core/Src/lcd1602_i2c.o" "../Core/Src/lcd1602_i2c.c"
+../Core/Src/lcd1602_i2c.c: In function 'lcd_clear':
+../Core/Src/lcd1602_i2c.c:80:3: warning: implicit declaration of function 'lcd_send_data'; did you mean 'lcd_writeData'? [-Wimplicit-function-declaration]
+   lcd_send_data (' ');
+   ^~~~~~~~~~~~~
+   lcd_writeData
+Finished building: ../Core/Src/lcd1602_i2c.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Core/Src/lcd1602_i2c.o: In function `lcd_clear':
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/lcd1602_i2c.c:80: undefined reference to `lcd_send_data'
 collect2.exe: error: ld returned 1 exit status
 makefile:35: recipe for target 'petFoorDispenser.elf' failed
 make: *** [petFoorDispenser.elf] Error 1
-14:05:30 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+13:47:40 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
+Building file: ../Core/Src/lcd1602_i2c.c
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/lcd1602_i2c.d" -MT"Core/Src/lcd1602_i2c.o" -o "Core/Src/lcd1602_i2c.o" "../Core/Src/lcd1602_i2c.c"
+Finished building: ../Core/Src/lcd1602_i2c.c
+ 
 Building target: petFoorDispenser.elf
 Invoking: MCU GCC Linker
 arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Core/Src/main.o: In function `screen_time':
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:437: undefined reference to `display_time'
-collect2.exe: error: ld returned 1 exit status
-make: *** [petFoorDispenser.elf] Error 1
-makefile:35: recipe for target 'petFoorDispenser.elf' failed
-14:05:56 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+  19640	    148	   1916	  21704	   54c8	petFoorDispenser.elf
+ 
+14:35:46 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+make -j8 all 
+Building file: ../Core/Src/lcd1602_i2c.c
+Building file: ../Core/Src/main.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/lcd1602_i2c.d" -MT"Core/Src/lcd1602_i2c.o" -o "Core/Src/lcd1602_i2c.o" "../Core/Src/lcd1602_i2c.c"
+C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+In file included from ../Core/Src/main.c:1:0:
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_s menu = { MENU_FEED,MENU_SETTINGS,
+               ^
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'tim7_Init':
+../Core/Src/main.c:195:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c: In function 'screen_time':
+../Core/Src/main.c:488:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:489:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:504:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:505:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c: In function 'screen_alarmSelected':
+../Core/Src/main.c:597:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:598:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:614:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:615:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+Finished building: ../Core/Src/main.c
+ 
+Finished building: ../Core/Src/lcd1602_i2c.c
+ 
+Building target: petFoorDispenser.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
+Finished building target: petFoorDispenser.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
+arm-none-eabi-size "petFoorDispenser.elf"
+   text	   data	    bss	    dec	    hex	filename
+  19636	    148	   1916	  21700	   54c4	petFoorDispenser.elf
+ 
+14:42:02 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_s menu = { MENU_FEED,MENU_SETTINGS,
                ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
 ../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+../Core/Src/main.c:195:8: warning: unused variable 'a' [-Wunused-variable]
   float a = HAL_RCC_GetPCLK2Freq();
         ^
 ../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:445:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:488:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:446:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:489:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:461:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:504:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:462:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:505:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:477:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c: In function 'screen_alarmSelected':
+../Core/Src/main.c:597:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:478:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:598:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:614:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:615:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 Finished building: ../Core/Src/main.c
@@ -383,92 +319,50 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  19052	    148	   1908	  21108	   5274	petFoorDispenser.elf
+  19636	    148	   1916	  21700	   54c4	petFoorDispenser.elf
  
-14:14:53 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:42:36 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_s menu = { MENU_FEED,MENU_SETTINGS,
                ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
 ../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+../Core/Src/main.c:195:8: warning: unused variable 'a' [-Wunused-variable]
   float a = HAL_RCC_GetPCLK2Freq();
         ^
 ../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:488:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:489:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:504:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:505:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c: In function 'screen_alarmSelected':
+../Core/Src/main.c:597:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:598:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Core/Src/main.o: In function `screen_alarms':
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:511: undefined reference to `screen_alarmSelected'
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:512: undefined reference to `screen_alarmSelected'
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug/../Core/Src/main.c:513: undefined reference to `screen_alarmSelected'
-collect2.exe: error: ld returned 1 exit status
-makefile:35: recipe for target 'petFoorDispenser.elf' failed
-make: *** [petFoorDispenser.elf] Error 1
-14:15:30 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
-               ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
-  float a = HAL_RCC_GetPCLK2Freq();
-        ^
-../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:614:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:615:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 Finished building: ../Core/Src/main.c
@@ -483,46 +377,50 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  19200	    148	   1908	  21256	   5308	petFoorDispenser.elf
+  19636	    148	   1916	  21700	   54c4	petFoorDispenser.elf
  
-14:16:27 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-14:17:43 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+14:45:57 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
 C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include" -I"C:/Users/aaron/Desktop/git_driverLCD16X2/driver"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
 In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+ menu_s menu = { MENU_FEED,MENU_SETTINGS,
                ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
 ../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
+../Core/Src/main.c:195:8: warning: unused variable 'a' [-Wunused-variable]
   float a = HAL_RCC_GetPCLK2Freq();
         ^
 ../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:488:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:489:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:504:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:505:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c: In function 'screen_alarmSelected':
+../Core/Src/main.c:597:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:598:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+     switch(itSource)
+     ^~~~~~
+../Core/Src/main.c:614:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+        while(!flag_GPIO_it);
+        ^~~~~
+../Core/Src/main.c:615:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 Finished building: ../Core/Src/main.c
@@ -537,158 +435,5 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  19200	    148	   1908	  21256	   5308	petFoorDispenser.elf
- 
-14:19:43 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
-               ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
-  float a = HAL_RCC_GetPCLK2Freq();
-        ^
-../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  19200	    148	   1908	  21256	   5308	petFoorDispenser.elf
- 
-14:21:40 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
-               ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
-  float a = HAL_RCC_GetPCLK2Freq();
-        ^
-../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  19232	    148	   1908	  21288	   5328	petFoorDispenser.elf
- 
-14:23:07 **** Incremental Build of configuration Debug for project petFoorDispenser ****
-make -j8 all 
-Building file: ../Core/Src/main.c
-Invoking: MCU GCC Compiler
-C:\Users\aaron\Desktop\git_dispenser\workSpace\petFoorDispenser\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DUSE_HAL_DRIVER -DSTM32F446xx -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Drivers/CMSIS/Include"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" -o "Core/Src/main.o" "../Core/Src/main.c"
-In file included from ../Core/Src/main.c:1:0:
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
- menu_t menu = { MENU_FEED,MENU_SETTINGS,
-               ^
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:157:15: warning: missing braces around initializer [-Wmissing-braces]
-../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:154:8: warning: unused variable 'a' [-Wunused-variable]
-  float a = HAL_RCC_GetPCLK2Freq();
-        ^
-../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:446:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:447:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:462:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:463:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-../Core/Src/main.c:478:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
-        while(!flag_GPIO_it);
-        ^~~~~
-../Core/Src/main.c:479:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
-     switch(itSource)
-     ^~~~~~
-Finished building: ../Core/Src/main.c
- 
-Building target: petFoorDispenser.elf
-Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F446RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "petFoorDispenser.elf" @"objects.list"   -lm
-Finished building target: petFoorDispenser.elf
- 
-make --no-print-directory post-build
-Generating hex and Printing size information:
-arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
-arm-none-eabi-size "petFoorDispenser.elf"
-   text	   data	    bss	    dec	    hex	filename
-  19256	    148	   1908	  21312	   5340	petFoorDispenser.elf
+  19636	    148	   1916	  21700	   54c4	petFoorDispenser.elf
  

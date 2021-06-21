@@ -1,0 +1,21 @@
+/*
+ * screenDriver.c
+ *
+ *  Created on: Jun 21, 2021
+ *      Author: aaron
+ */
+
+
+#include ""
+void lcd_send_line(char *str,int row,int col)
+{
+	lcd_put_cur(row,col);
+	lcd_send_string(str);
+}
+
+void lcd_send_line_clr(char *str,int row,int col)
+{
+	lcd_clear();
+	lcd_put_cur(row,col);
+	lcd_send_string(str);
+}

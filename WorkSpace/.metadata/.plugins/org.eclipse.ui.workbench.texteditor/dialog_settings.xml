@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="ARROW" key="selection"/>
+		<item value="time" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="time"/>
 			<item value="ARROWXY"/>
 			<item value="Font_11x18"/>
 			<item value="RCC_PLL_Clock_Source"/>
@@ -15,9 +16,9 @@
 			<item value="row"/>
 			<item value="RTC_AM_PM_Definitions"/>
 			<item value="RTC_AM_PM_DefinitionsRTC_AM_PM_Definitions"/>
-			<item value="RCC_RTC_Clock_Source"/>
 		</list>
 		<list key="replacehistory">
+			<item value="timeAlarm"/>
 			<item value="ARROW"/>
 			<item value="arrow_row"/>
 			<item value="screen_settings"/>
@@ -25,7 +26,6 @@
 			<item value="screen_cycles"/>
 			<item value="screen_main"/>
 			<item value="ROW_SETTING"/>
-			<item value="main_screen"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

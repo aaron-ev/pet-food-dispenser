@@ -4,7 +4,8 @@
 
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_rtc.h"
-#include "lcd_i2c.h"
+//#include "lcd_i2c.h"
+#include "screenDriver.h"
 #include "servo.h"
 #include "fonts.h"
 #include "ssd1306.h"
@@ -105,25 +106,13 @@ RTC_HandleTypeDef rtc;
 	#define MENU_ALARM1		  0,2,0,0
 	#define MENU_ALARM2		  1,2,1,0
 	#define MENU_ALARM3		  0,10,0,8
-/*
-	#define ARROW_FEED  	  	{1,0}
-	#define ARROW_SETTINGS  	{1,6}
-	#define ARROW_SPEED     	{0,0}
-	#define ARROW_TIME      	{1,0}
-	#define ARROW_ALARMS    	{0,8}
-	#define ARROW_BACK      	{1,8}
-	#define ARROW_CENTER      {20,20}
-	#define ARROW_SERVING     {10,40}
+	//time
+	#define XY_HOUR_ONE_DIGIT   {0,6}
+	#define XY_HOUR_TWO_DIGITS  {0,5}
+	#define XY_COLON 			{0,7}
+	#define XY_MINUTES 			{0,9}
+    #define XY_MINUTES_ZERO	    {0,8}
 
-	//#define ARROW_ALARM1      {33,0}
-	//#define ARROW_ALARM2      {33,20}
-	//#define ARROW_ALARM3      {33,40}
-*/
-	#define XY_HOUR 			{0,4}
-	#define XY_MINUTES 			{0,7}
-	#define XY_SECONDS 			{0,10}
-	#define XY_COLON1 			{0,6}
-	#define XY_COLON2 			{0,9}
 #endif
 /////////
 /*
@@ -153,8 +142,8 @@ typedef struct
 	menu_e center;
 	menu_e speed_center;
 	menu_e speed_value;
-}menu_t;
-menu_t menu = { MENU_FEED,MENU_SETTINGS,
+}menu_s;
+menu_s menu = { MENU_FEED,MENU_SETTINGS,
 				MENU_SPEED,MENU_TIME,
 				MENU_ALARMS,MENU_BACK,
 				MENU_ALARM1,MENU_ALARM2,
@@ -164,84 +153,32 @@ menu_t menu = { MENU_FEED,MENU_SETTINGS,
 			  };
 typedef struct
 {
-	uint16_t hour[2];
+	uint16_t hour_one_digit[2];
+	uint16_t hour_two_digits[2];
+	uint16_t colon[2];
 	uint16_t minutes[2];
-	uint16_t seconds[2];
-	uint16_t colon1[2];
-	uint16_t colon2[2];
-}time_s;
-time_s timexy = {XY_HOUR,XY_MINUTES,XY_SECONDS,XY_COLON1,XY_COLON2};
-/*
-menu_t menu_test = {MENU_FEED,MENU_SETTINGS,MENU_SPEED,
-					MENU_TIME,MENU_ALARMS,MENU_BACK,MENU_ALARM1,
-					MENU_ALARM2,MENU_ALARM3
-
-	};*/
-/*
-typedef struct
-{
-	uint16_t feed[2];
-	uint16_t settings[2];
-	uint16_t speed[2];
-	uint16_t time[2];
-	uint16_t alarms[2];
-	uint16_t back[2];
-	uint16_t serving[2];
-	uint16_t center[2];
-	uint16_t speed_center[2];
-	uint16_t speed_value[2];
-	uint16_t alarm1[2];
-	uint16_t alarm2[2];
-	uint16_t alarm3[2];
-}menu_s;
-*/
-/*
-typedef struct
-{
-	uint16_t hour[2];
-	uint16_t minutes[2];
-	uint16_t seconds[2];
-	uint16_t colon1[2];
-	uint16_t colon2[2];
+	uint16_t minutes_zero[2];
 }time_s;
 
+typedef enum
+{
+	ALARM1,
+	ALARM2,
+	ALARM3,
+	ALARM_NONE,
+}alarmNumber;
 typedef struct
 {
-	uint16_t feed[2];
-	uint16_t settings[2];
-	uint16_t speed[2];
-	uint16_t time[2];
-	uint16_t alarms[2];
-	uint16_t back[2];
-	uint16_t alarm1[2];
-	uint16_t alarm2[2];
-	uint16_t alarm3[2];
-}arrow_t;
+	uint8_t hour;
+	uint8_t minutes;
+	bool	activate;
+	alarmNumber number;
+}alarmTime;
 
-menu_s menu = {  MENU_FEED,MENU_SETTINGS,
-                 MENU_SPEED,MENU_TIME,
-                 MENU_ALARMS,MENU_BACK,
-                 MENU_SERVING,MENU_CENTER,
-				 MENU_SPEED_CENTER,MENU_SPEED_VALUE,
-				 MENU_ALARM1,MENU_ALARM2,
-				 MENU_ALARM3
-                };
-arrow_t arrow_test ={ARROW_FEED,ARROW_SETTINGS,
-					ARROW_SPEED,ARROW_TIME,
-					ARROW_ALARMS,ARROW_BACK,
-				    };
-	*/
-//time_s timexy = {XY_HOUR,XY_MINUTES,XY_SECONDS,XY_COLON1,XY_COLON2};
-/*
-int arrow[8][2] = {ARROW_SPEED,ARROW_TIME,
-				   ARROW_ALARMS,ARROW_BACK,
-				   ARROW_FEED,ARROW_SETTINGS,
-				   ARROW_SERVING,ARROW_CENTER};
 
-int hourxy[3][2] = {XY_HOUR,XY_MINUTES,XY_SECONDS};
-//int hourDot[2][2] = {{43,0},{78,0}};
-int hourDot[2][2] = {{0,6},{0,9}};
-*/
+alarmTime alarm1,alarm2,alarm3;
+time_s timexy = {XY_HOUR_ONE_DIGIT,XY_HOUR_TWO_DIGITS,XY_COLON,XY_MINUTES,XY_MINUTES_ZERO};
+
 int	arrow_row = ROW_FEED;
 int itSource = SOURCE_NOTHING;
 int times_to_serve = 1;
@@ -258,7 +195,7 @@ void display_screen_speed(void);
 void display_screen_alarms(void);
 void display_screen_time(void);
 void display_hour(void);
-// screen functions
+void display_screen_alarmSelected(alarmNumber alarmx);
 void screen_main(void);
 void screen_cycles(void);
 void screen_speed(void);
@@ -284,13 +221,6 @@ void enable_it_buttons(void);
 void disable_it_buttons(void);
 void clear_arrowSettings(void);
 
-typedef enum
-{
-	ALARM1,
-	ALARM2,
-	ALARM3,
-}alarms;
-
-void screen_alarmSelected(alarms alarm);
+void screen_alarmSelected(alarmNumber alarmNumber);
 void clear_arrowAlarms(void);
 #endif
