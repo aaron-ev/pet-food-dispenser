@@ -1,6 +1,7 @@
 #include <it.h>
 #include "stm32f4xx_hal.h"
 
+extern TIM_TypeDef tim3Buzzer_handle;
 extern TIM_TypeDef tim6;
 extern TIM_TypeDef tim7;
 
@@ -39,4 +40,9 @@ void TIM6_DAC_IRQHandler(void)
 void TIM7_IRQHandler(void)
 {
 	HAL_TIM_IRQHandler(&tim7);
+}
+
+void TIM3_IRQHandler(void)
+{
+	HAL_TIM_IRQHandler(&tim3Buzzer_handle);
 }

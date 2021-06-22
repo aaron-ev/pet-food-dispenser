@@ -209,7 +209,7 @@ void GPIO_Init(void);
 void SystemClock_Config(void);
 static void MX_I2C1_Init(void);
 void RTC_Init(void);
-void tim6_Init(void);
+void tim6Buzzer_Init(void);
 void tim7_Init(void);
 // error handler functions
 void Error_Handler(void);
@@ -223,4 +223,7 @@ void clear_arrowSettings(void);
 
 void screen_alarmSelected(alarmNumber alarmNumber);
 void clear_arrowAlarms(void);
+
+//buzzer functions
+void buzzer_init(void);
 #endif

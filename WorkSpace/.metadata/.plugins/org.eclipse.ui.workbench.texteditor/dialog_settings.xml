@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="time" key="selection"/>
+		<item value="TIM_Output_Compare_Polarity" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="RCC_AHB_Clock_Source"/>
+			<item value="TIM_Counter_Mode"/>
+			<item value="TIM_ClockDivision"/>
+			<item value="TIM_Output_Compare_and_PWM_modes"/>
+			<item value="RTC_Hour_Formats"/>
+			<item value="RTC_AM_PM_Definitions"/>
 			<item value="time"/>
 			<item value="ARROWXY"/>
-			<item value="Font_11x18"/>
-			<item value="RCC_PLL_Clock_Source"/>
-			<item value="&amp;"/>
-			<item value="row"/>
-			<item value="RTC_AM_PM_Definitions"/>
-			<item value="RTC_AM_PM_DefinitionsRTC_AM_PM_Definitions"/>
 		</list>
 		<list key="replacehistory">
 			<item value="timeAlarm"/>

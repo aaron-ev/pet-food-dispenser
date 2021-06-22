@@ -7,8 +7,8 @@ int servo_delay = 200; // ms
 void servo_Init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
 
-	GPIO_InitTypeDef gpioServo;
-	TIM_OC_InitTypeDef tim2PWMConfig;
+	GPIO_InitTypeDef gpioServo = {0};
+	TIM_OC_InitTypeDef tim2PWMConfig = {0};
 
 	__HAL_RCC_TIM2_CLK_ENABLE();
 	__HAL_RCC_GPIOA_CLK_ENABLE();
@@ -19,7 +19,7 @@ void servo_Init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 	gpioServo.Alternate = GPIO_AF1_TIM2;
 
 	HAL_GPIO_Init(GPIOA,&gpioServo);
-
+	float a = HAL_RCC_GetPCLK1Freq();
 	// TIM Init
 	tim2PWM.Instance = TIM2;
 	tim2PWM.Init.Prescaler = 80 - 1; // newClk = 100 kHz, P2CLK = 8 Mhz

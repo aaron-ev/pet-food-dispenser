@@ -1,4 +1,4 @@
-14:45:57 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+10:12:23 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
@@ -12,34 +12,47 @@ C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:
 C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
 C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
 C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:146:15: warning: missing braces around initializer [-Wmissing-braces]
+../Core/Src/main.c: In function 'buzzer_init':
+../Core/Src/main.c:21:8: warning: unused variable 'd' [-Wunused-variable]
+  float d = HAL_RCC_GetPCLK2Freq();
+        ^
+../Core/Src/main.c:20:8: warning: unused variable 'C' [-Wunused-variable]
+  float C = HAL_RCC_GetSysClockFreq();
+        ^
+../Core/Src/main.c:19:8: warning: unused variable 'b' [-Wunused-variable]
+  float b = HAL_RCC_GetHCLKFreq();
+        ^
+../Core/Src/main.c:18:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK1Freq();
+        ^
 ../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:195:8: warning: unused variable 'a' [-Wunused-variable]
-  float a = HAL_RCC_GetPCLK2Freq();
+../Core/Src/main.c:243:8: warning: unused variable 'a' [-Wunused-variable]
+  float a = HAL_RCC_GetPCLK1Freq();
         ^
 ../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:488:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:536:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:489:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:537:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:504:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:552:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:505:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:553:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 ../Core/Src/main.c: In function 'screen_alarmSelected':
-../Core/Src/main.c:597:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:645:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:598:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:646:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:614:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:662:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:615:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:663:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 Finished building: ../Core/Src/main.c
@@ -54,8 +67,8 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  19636	    148	   1916	  21700	   54c4	petFoorDispenser.elf
+  21540	    152	   1992	  23684	   5c84	petFoorDispenser.elf
  
 
-14:45:59 Build Finished (took 2s.179ms)
+10:12:24 Build Finished (took 1s.736ms)
 

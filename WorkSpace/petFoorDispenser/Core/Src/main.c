@@ -1,9 +1,57 @@
 #include "main.h"
 #include "lcd1602_i2c.h"
 
+TIM_HandleTypeDef tim3Buzzer_handle = {0};
+uint32_t pulse294Hz = 170;
 void buzzer_init(void)
 {
 
+	GPIO_InitTypeDef gpioBuzzer= {0};
+	TIM_OC_InitTypeDef tim3Buzzer_channel = {0};
+	__HAL_RCC_TIM3_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	// TIM Init
+	tim3Buzzer_handle.Instance = TIM3;
+	tim3Buzzer_handle.Init.Period = 0xFFFFFFFF;
+	tim3Buzzer_handle.Init.Prescaler = 80; // newClk = 1 kHz, P1CLK = 8 Mhz
+
+	float a = HAL_RCC_GetPCLK1Freq();
+	float b = HAL_RCC_GetHCLKFreq();
+	float C = HAL_RCC_GetSysClockFreq();
+	float d = HAL_RCC_GetPCLK2Freq();
+
+	//GPIO Init
+	gpioBuzzer.Pin = GPIO_PIN_6;
+	gpioBuzzer.Mode = GPIO_MODE_AF_PP;
+	gpioBuzzer.Pull = GPIO_NOPULL;
+	gpioBuzzer.Speed = GPIO_SPEED_FREQ_LOW;
+	gpioBuzzer.Alternate = GPIO_AF2_TIM3;
+
+	HAL_GPIO_Init(GPIOA,&gpioBuzzer);
+
+	if(HAL_TIM_OC_Init(&tim3Buzzer_handle) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	tim3Buzzer_channel.OCMode = TIM_OCMODE_TOGGLE;
+	tim3Buzzer_channel.OCPolarity = TIM_OCNPOLARITY_HIGH;
+	tim3Buzzer_channel.Pulse = pulse294Hz;
+
+	if(HAL_TIM_OC_ConfigChannel(&tim3Buzzer_handle,&tim3Buzzer_channel,TIM_CHANNEL_1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	// Interrupt settings
+	HAL_NVIC_SetPriority(TIM3_IRQn,0,15);
+	HAL_NVIC_EnableIRQ(TIM3_IRQn);
+/*
+	if(HAL_TIM_OC_Start_IT(&tim3Buzzer_handle,TIM_CHANNEL_1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	*/
 }
 
 void update_alarmTime(alarmTime *alarmTimex)
@@ -58,12 +106,12 @@ int main(void)
 	servo_Init(GPIOA,GPIO_SERVO_A0);
 	MX_I2C1_Init();
 	screen_init();
-	screen_send_line("Hello World",menu.feed.screenxy);
+	screen_send_line("Food dispener",menu.feed.screenxy);
 	HAL_Delay(500);
-	//tim6_Init();
+	buzzer_init();
+	tim6Buzzer_Init();
 	tim7_Init();
 	RTC_Init();
-
 	while (1)
 	{
 		HAL_TIM_Base_Start_IT(&tim7);
@@ -128,7 +176,6 @@ static void MX_I2C1_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   //GPIO Ports Clock Enable
-  __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   //Configure GPIO pins
@@ -174,26 +221,27 @@ void RTC_Init(void)
  	}
  }
 
-void tim6_Init(void)
+void tim6Buzzer_Init(void)
 {
 	__HAL_RCC_TIM6_CLK_ENABLE();
 	tim6.Instance = TIM6;
-	tim6.Init.Prescaler = 80;// clk_timeer = 100 kHz
-	tim6.Init.Period = 7000-1;//  period = 700ms
+	tim6.Init.Prescaler = 8000;// clk_timer = 1 kHz
+	tim6.Init.Period = 100-1;//  period = 700ms
 	if(HAL_TIM_Base_Init(&tim6) != HAL_OK)
 		Error_Handler();
 
 	// Interrupt settings
-	HAL_NVIC_SetPriority(TIM6_DAC_IRQn,0,15);
+	HAL_NVIC_SetPriority(TIM6_DAC_IRQn,0,14);
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
 }
 
+// Timer to interrupt every second
 void tim7_Init(void)
 {
 	__HAL_RCC_TIM7_CLK_ENABLE();
 	tim7.Instance = TIM7;
-	float a = HAL_RCC_GetPCLK2Freq();
-	tim7.Init.Prescaler =8000 ;// clk_timeer = 1 kHz
+	float a = HAL_RCC_GetPCLK1Freq();
+	tim7.Init.Prescaler = 8000 ;// clk_timeer = 1 kHz
 	tim7.Init.Period = 1000-1;//  period = 1
 	if(HAL_TIM_Base_Init(&tim7) != HAL_OK)
 	{
@@ -660,6 +708,8 @@ void enable_it_buttons(void)
 // Call backs
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+	HAL_TIM_OC_Start_IT(&tim3Buzzer_handle,TIM_CHANNEL_1);
+	HAL_TIM_Base_Start_IT(&tim6);
 	flag_GPIO_it = TRUE;
 	button_pressed = GPIO_Pin;
 	switch (GPIO_Pin)
@@ -676,6 +726,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		display_hour();
 	}
+
+	if(htim->Instance == TIM6)
+
+	{
+		HAL_TIM_OC_Stop(&tim3Buzzer_handle,TIM_CHANNEL_1);
+		HAL_TIM_Base_Stop_IT(&tim6);
+	}
+
+}
+
+void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	 if(htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
+	 {
+		 __HAL_TIM_SET_COMPARE(htim,TIM_CHANNEL_1,HAL_TIM_ReadCapturedValue(htim,TIM_CHANNEL_1)+pulse294Hz);
+	 }
 }
 
 void update_time(uint8_t t,uint8_t m)
