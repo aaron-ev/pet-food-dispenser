@@ -235,14 +235,16 @@ void tim6Buzzer_Init(void)
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
 }
 
-// Timer to interrupt every second
+// Timer to count every second
 void tim7_Init(void)
 {
 	__HAL_RCC_TIM7_CLK_ENABLE();
+
 	tim7.Instance = TIM7;
 	float a = HAL_RCC_GetPCLK1Freq();
-	tim7.Init.Prescaler = 8000 ;// clk_timeer = 1 kHz
-	tim7.Init.Period = 1000-1;//  period = 1
+	tim7.Init.Prescaler = 400000 ;// clk_timeer = 200 Hz
+	tim7.Init.Period = 12000-1;//  period = 1
+
 	if(HAL_TIM_Base_Init(&tim7) != HAL_OK)
 	{
 		Error_Handler();
@@ -252,6 +254,7 @@ void tim7_Init(void)
 	HAL_NVIC_SetPriority(TIM7_IRQn,0,15);
 	HAL_NVIC_EnableIRQ(TIM7_IRQn);
 }
+
 void Error_Handler(void)
 {
   __disable_irq();

@@ -1,4 +1,4 @@
-10:12:23 **** Incremental Build of configuration Debug for project petFoorDispenser ****
+15:22:45 **** Incremental Build of configuration Debug for project petFoorDispenser ****
 make -j8 all 
 Building file: ../Core/Src/main.c
 Invoking: MCU GCC Compiler
@@ -26,33 +26,33 @@ C:/Users/aaron/Desktop/git_dispenser/workSpace/petFoorDispenser/Core/Inc/main.h:
   float a = HAL_RCC_GetPCLK1Freq();
         ^
 ../Core/Src/main.c: In function 'tim7_Init':
-../Core/Src/main.c:243:8: warning: unused variable 'a' [-Wunused-variable]
+../Core/Src/main.c:244:8: warning: unused variable 'a' [-Wunused-variable]
   float a = HAL_RCC_GetPCLK1Freq();
         ^
 ../Core/Src/main.c: In function 'screen_time':
-../Core/Src/main.c:536:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:539:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:537:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:540:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:552:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:555:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:553:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:556:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 ../Core/Src/main.c: In function 'screen_alarmSelected':
-../Core/Src/main.c:645:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:648:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:646:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:649:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
-../Core/Src/main.c:662:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+../Core/Src/main.c:665:8: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
         while(!flag_GPIO_it);
         ^~~~~
-../Core/Src/main.c:663:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+../Core/Src/main.c:666:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
      switch(itSource)
      ^~~~~~
 Finished building: ../Core/Src/main.c
@@ -67,8 +67,8 @@ Generating hex and Printing size information:
 arm-none-eabi-objcopy -O ihex "petFoorDispenser.elf" "petFoorDispenser.hex"
 arm-none-eabi-size "petFoorDispenser.elf"
    text	   data	    bss	    dec	    hex	filename
-  21540	    152	   1992	  23684	   5c84	petFoorDispenser.elf
+  21544	    152	   1992	  23688	   5c88	petFoorDispenser.elf
  
 
-10:12:24 Build Finished (took 1s.736ms)
+15:22:49 Build Finished (took 3s.551ms)
 
