@@ -1,86 +1,140 @@
 #include "main.h"
-#include "lcd1602_i2c.h"
+#include "math.h"
 
 TIM_HandleTypeDef tim3Buzzer_handle = {0};
+TIM_HandleTypeDef tim4Debounce = {0};
+
 uint32_t pulse294Hz = 170;
-void buzzer_init(void)
+
+
+void alarmReorder(alarmTime *alarmTimex)
 {
-
-	GPIO_InitTypeDef gpioBuzzer= {0};
-	TIM_OC_InitTypeDef tim3Buzzer_channel = {0};
-	__HAL_RCC_TIM3_CLK_ENABLE();
-	__HAL_RCC_GPIOA_CLK_ENABLE();
-	// TIM Init
-	tim3Buzzer_handle.Instance = TIM3;
-	tim3Buzzer_handle.Init.Period = 0xFFFFFFFF;
-	tim3Buzzer_handle.Init.Prescaler = 80; // newClk = 1 kHz, P1CLK = 8 Mhz
-
-	float a = HAL_RCC_GetPCLK1Freq();
-	float b = HAL_RCC_GetHCLKFreq();
-	float C = HAL_RCC_GetSysClockFreq();
-	float d = HAL_RCC_GetPCLK2Freq();
-
-	//GPIO Init
-	gpioBuzzer.Pin = GPIO_PIN_6;
-	gpioBuzzer.Mode = GPIO_MODE_AF_PP;
-	gpioBuzzer.Pull = GPIO_NOPULL;
-	gpioBuzzer.Speed = GPIO_SPEED_FREQ_LOW;
-	gpioBuzzer.Alternate = GPIO_AF2_TIM3;
-
-	HAL_GPIO_Init(GPIOA,&gpioBuzzer);
-
-	if(HAL_TIM_OC_Init(&tim3Buzzer_handle) != HAL_OK)
+	RTC_TimeTypeDef time = {0};
+	uint8_t i,j;
+	uint8_t d[NUM_ALARMS_USED];
+	HAL_RTC_GetTime(&rtc,&time,RTC_FORMAT_BIN);
+	uint8_t count;
+	for(i = 0; i < NUM_ALARMS_USED; i = i + 1)
 	{
-		Error_Handler();
+		count = alarms[i].hour;
+		for(j = 0; j < 24; i = i + 1)
+		{
+			count++;
+			if(count == 25)
+				count = 0;
+
+			if(count == time.Hours)
+			{
+				d[i] = j;
+				break;
+			}
+		}
 	}
 
-	tim3Buzzer_channel.OCMode = TIM_OCMODE_TOGGLE;
-	tim3Buzzer_channel.OCPolarity = TIM_OCNPOLARITY_HIGH;
-	tim3Buzzer_channel.Pulse = pulse294Hz;
+	for(i = 0; i < NUM_ALARMS_USED; i = i + 1)
+	{
+		count = alarmTimex[i].minutes;
+		for(j = 0; j < 60; i = i + 1)
+		{
+			count++;
+			if(count == 61)
+				count = 0;
+			if(count == time.Minutes)
+			{
+				d[i] = d[i] + j;
+				break;
+			}
+		}
+	}
+}
 
-	if(HAL_TIM_OC_ConfigChannel(&tim3Buzzer_handle,&tim3Buzzer_channel,TIM_CHANNEL_1) != HAL_OK)
+uint8_t getAlarmsActive(void)
+{
+	uint8_t count = 0;
+	uint8_t i;
+
+	for(i = 0; i < NUM_ALARMS_USED; i = i + 1)
+	{
+		if(alarms[i].active == TRUE)
+			count++;
+	}
+	return count;
+}
+
+uint8_t getAlarmPending(void)
+{
+	uint8_t alarmPending = NO_ALARM_PENDING;
+	uint8_t i;
+
+	for(i = 0; i < NUM_ALARMS_USED; i = i + 1)
+	{
+		if(alarms[i].pending == TRUE)
+			alarmPending = i;
+	}
+
+	return alarmPending;
+}
+void buzzerSound(void)
+{
+	HAL_TIM_OC_Start_IT(&tim3Buzzer_handle,TIM_CHANNEL_1);
+	HAL_TIM_Base_Start_IT(&tim6); // a short time for buzzer on
+}
+void tim3Debounce_init(void)
+{
+	__HAL_RCC_TIM4_CLK_ENABLE();
+
+	tim4Debounce.Instance = TIM4;
+	tim4Debounce.Init.Prescaler = 80;//clk = 100 kHz
+	tim4Debounce.Init.Period = 1000-1;// interrup every 1ms
+
+	if(HAL_TIM_Base_Init(&tim4Debounce) != HAL_OK)
 	{
 		Error_Handler();
 	}
 
 	// Interrupt settings
-	HAL_NVIC_SetPriority(TIM3_IRQn,0,15);
-	HAL_NVIC_EnableIRQ(TIM3_IRQn);
-/*
-	if(HAL_TIM_OC_Start_IT(&tim3Buzzer_handle,TIM_CHANNEL_1) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	*/
+	HAL_NVIC_SetPriority(TIM4_IRQn,PRIORITY_BUTTON_DEBAUNCE,0);
+	HAL_NVIC_EnableIRQ(TIM4_IRQn);
 }
 
-void update_alarmTime(alarmTime *alarmTimex)
+void setAlarm(alarmTime *alarmTimex)
+{
+	RTC_AlarmTypeDef sAlarm = {0};
+	uint8_t numAlarmsActive = getAlarmsActive();
+	if(numAlarmsActive == 0)
+	{
+		sAlarm.Alarm = RTC_ALARM_A;
+		alarms[alarmTimex->number].active = TRUE;
+	}
+	else if (numAlarmsActive == 1)
+	{
+		sAlarm.Alarm = RTC_ALARM_B;
+		alarms[alarmTimex->number].active = TRUE;
+	}
+	else
+		alarmReorder(alarmTimex);
+
+	if(alarmTimex->pending == FALSE)
+	{
+		sAlarm.AlarmTime.Hours = alarmTimex->hour;
+		sAlarm.AlarmTime.Minutes = alarmTimex->minutes;
+		sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY | RTC_ALARMMASK_SECONDS;
+
+		if(HAL_RTC_SetAlarm_IT(&rtc,&sAlarm,RTC_FORMAT_BIN) != HAL_OK)
+		{
+			Error_Handler();
+		}
+	}
+}
+void display_alarm(alarmNumber alarmNumberx)
 {
 	char hour[3];
 	char minutes[3];
 
-	if(alarmTimex->number != ALARM_NONE)
-	{
-		switch(alarmTimex->number)
-		{
-		case ALARM1:alarm1.hour = alarmTimex->hour;
-					alarm1.minutes = alarmTimex->minutes;
-					break;
-		case ALARM2:alarm2.hour = alarmTimex->hour;
-					alarm2.minutes = alarmTimex->minutes;
-					break;
-		case ALARM3:alarm3.hour = alarmTimex->hour;
-					alarm3.minutes = alarmTimex->minutes;
-					break;
-		default:break;
-		}
+	itoa(alarms[alarmNumberx].hour,hour,10);
+	itoa(alarms[alarmNumberx].minutes,minutes,10);
 
-	}
-
-	itoa(alarmTimex->hour,hour,10);
-	itoa(alarmTimex->minutes,minutes,10);
-
-	if(alarmTimex->hour > 9)
+	if(alarms[alarmNumberx].hour > 9)
 		screen_send_line(hour,timexy.hour_two_digits);
 	else
 	{
@@ -89,7 +143,7 @@ void update_alarmTime(alarmTime *alarmTimex)
 	}
 	screen_send_line(":",timexy.colon);
 
-	if(alarmTimex->minutes > 9)
+	if(alarms[alarmNumberx].minutes > 9)
 		screen_send_line(minutes,timexy.minutes_zero);
 	else
 	{
@@ -102,16 +156,17 @@ int main(void)
 {
 	HAL_Init();
 	SystemClock_Config();
-	GPIO_Init();
+	GPIO_init();
 	servo_Init(GPIOA,GPIO_SERVO_A0);
 	MX_I2C1_Init();
 	screen_init();
-	screen_send_line("Food dispener",menu.feed.screenxy);
+	screen_send_line("Food dispenser",menu.feed.screenxy);
 	HAL_Delay(500);
-	buzzer_init();
-	tim6Buzzer_Init();
-	tim7_Init();
 	RTC_Init();
+	tim3buzzer_init();
+	tim6BuzzerSound_init();
+	tim3Debounce_init();
+	tim7DisplayUpdate_init();
 	while (1)
 	{
 		HAL_TIM_Base_Start_IT(&tim7);
@@ -125,12 +180,12 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  // Configure the main internal regulator output voltage
+  //configure the main internal regulator output voltage
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
-  // Initializes the RCC Oscillators according to the specified parameters
-   //in the RCC_OscInitTypeDef structure.
 
+  //initializes the RCC Oscillators according to the specified parameters
+  //in the RCC_OscInitTypeDef structure.
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
@@ -139,7 +194,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  //Initializes the CPU, AHB and APB buses clocks
+  //initializes the CPU, AHB and APB buses clocks
 
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -171,7 +226,7 @@ static void MX_I2C1_Init(void)
   }
 }
 
- void GPIO_Init(void)
+ void GPIO_init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
@@ -185,17 +240,19 @@ static void MX_I2C1_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
   // down
-  HAL_NVIC_SetPriority(EXTI2_IRQn,0,15);
+  HAL_NVIC_SetPriority(EXTI2_IRQn,PRIORITY_BUTTON,0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
   // up
-  HAL_NVIC_SetPriority(EXTI1_IRQn,0,15);
+  HAL_NVIC_SetPriority(EXTI1_IRQn,PRIORITY_BUTTON,0);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
   // enter
-  HAL_NVIC_SetPriority(EXTI0_IRQn,0,15);
+  HAL_NVIC_SetPriority(EXTI0_IRQn,PRIORITY_BUTTON,0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 }
 void RTC_Init(void)
  {
+	RTC_TimeTypeDef time;
+
  	rtc.Instance = RTC;
  	rtc.Init.HourFormat = RTC_HOURFORMAT_24;
  	rtc.Init.AsynchPrediv = 127;
@@ -209,40 +266,85 @@ void RTC_Init(void)
  		Error_Handler();
  	}
 
- 	RTC_TimeTypeDef time;
-
- 	time.Hours = 23;
- 	time.Minutes = 59;
- 	//time.TimeFormat = RTC_HOURFORMAT_24;
+ 	time.Hours = 0;
+ 	time.Minutes = 0;
 
  	if(HAL_RTC_SetTime(&rtc,&time,RTC_FORMAT_BIN) != HAL_OK)
  	{
  		Error_Handler();
  	}
+ 	//NVIC settings
+	HAL_NVIC_SetPriority(RTC_Alarm_IRQn,PRIORITY_ALARM,0);
+	HAL_NVIC_EnableIRQ(RTC_Alarm_IRQn);
  }
 
-void tim6Buzzer_Init(void)
+
+void tim3buzzer_init(void)
+{
+
+	GPIO_InitTypeDef gpioBuzzer= {0};
+	TIM_OC_InitTypeDef tim3Buzzer_channel = {0};
+	__HAL_RCC_TIM3_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	// TIM Init
+	tim3Buzzer_handle.Instance = TIM3;
+	tim3Buzzer_handle.Init.Period = 0xFFFFFFFF;
+	tim3Buzzer_handle.Init.Prescaler = 80; // newClk = 1 kHz, P1CLK = 8 Mhz
+
+	//GPIO Init
+	gpioBuzzer.Pin = GPIO_PIN_6;
+	gpioBuzzer.Mode = GPIO_MODE_AF_PP;
+	gpioBuzzer.Pull = GPIO_NOPULL;
+	gpioBuzzer.Speed = GPIO_SPEED_FREQ_LOW;
+	gpioBuzzer.Alternate = GPIO_AF2_TIM3;
+
+	HAL_GPIO_Init(GPIOA,&gpioBuzzer);
+
+	if(HAL_TIM_OC_Init(&tim3Buzzer_handle) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	tim3Buzzer_channel.OCMode = TIM_OCMODE_TOGGLE;
+	tim3Buzzer_channel.OCPolarity = TIM_OCNPOLARITY_HIGH;
+	tim3Buzzer_channel.Pulse = pulse294Hz;
+
+	if(HAL_TIM_OC_ConfigChannel(&tim3Buzzer_handle,&tim3Buzzer_channel,TIM_CHANNEL_1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	// Interrupt settings
+	HAL_NVIC_SetPriority(TIM3_IRQn,PRIORITY_BUZZER,0);
+	HAL_NVIC_EnableIRQ(TIM3_IRQn);
+/*
+	if(HAL_TIM_OC_Start_IT(&tim3Buzzer_handle,TIM_CHANNEL_1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	*/
+}
+void tim6BuzzerSound_init(void)
 {
 	__HAL_RCC_TIM6_CLK_ENABLE();
 	tim6.Instance = TIM6;
-	tim6.Init.Prescaler = 8000;// clk_timer = 1 kHz
-	tim6.Init.Period = 100-1;//  period = 700ms
+	tim6.Init.Prescaler = 80;// clk_timer = 100 kHz
+	tim6.Init.Period = 2000-1;//  period = 700ms
 	if(HAL_TIM_Base_Init(&tim6) != HAL_OK)
 		Error_Handler();
 
 	// Interrupt settings
-	HAL_NVIC_SetPriority(TIM6_DAC_IRQn,0,14);
+	HAL_NVIC_SetPriority(TIM6_DAC_IRQn,PRIORITY_BUZZER_SOUND,0);
 	HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
 }
 
-// Timer to count every second
-void tim7_Init(void)
+//timer to count every minute
+void tim7DisplayUpdate_init(void)
 {
 	__HAL_RCC_TIM7_CLK_ENABLE();
 
 	tim7.Instance = TIM7;
-	float a = HAL_RCC_GetPCLK1Freq();
-	tim7.Init.Prescaler = 400000 ;// clk_timeer = 200 Hz
+	tim7.Init.Prescaler = 40000 ;// clk_timeer = 200 Hz
 	tim7.Init.Period = 12000-1;//  period = 1
 
 	if(HAL_TIM_Base_Init(&tim7) != HAL_OK)
@@ -251,7 +353,7 @@ void tim7_Init(void)
 	}
 
 	// Interrupt settings
-	HAL_NVIC_SetPriority(TIM7_IRQn,0,15);
+	HAL_NVIC_SetPriority(TIM7_IRQn,PRIORIT_DISPLAY_UPDATE,0);
 	HAL_NVIC_EnableIRQ(TIM7_IRQn);
 }
 
@@ -376,19 +478,7 @@ void screen_cycles(void)
 
 }
 */
-/*
-void display_screen_alarmSelected(alarmNumber alarmx)
-{
-	screen_clear();
-	switch(alarmx)
-	{
-		case ALARM1: update_alarmTime(alarm1);break;
-		case ALARM2: update_alarmTime(alarm2);break;
-		case ALARM3: update_alarmTime(alarm3);break;
-		default:     break;
-	}
-}
-*/
+
 void screen_main(void)
 {
 	display_screen_main();
@@ -526,7 +616,6 @@ void screen_speed(void)
 void screen_time(void)
 {
 	RTC_TimeTypeDef time = {0};
-	//uint8_t finish = 0;
 	flag_GPIO_it = FALSE;
 	display_screen_time();
 	HAL_RTC_GetTime(&rtc,&time,RTC_FORMAT_BIN);
@@ -539,7 +628,7 @@ void screen_time(void)
 			    while(!flag_GPIO_it);
 				switch(itSource)
 				{
-					case SOURCE_BUTTON_DOWN: if(time.Hours > 1) time.Hours = time.Hours - 1;break;
+					case SOURCE_BUTTON_DOWN: if(time.Hours > 0) time.Hours = time.Hours - 1;break;
 					case SOURCE_BUTTON_UP:	if(time.Hours < 23) time.Hours = time.Hours + 1;break;
 					default: break;
 				}
@@ -572,7 +661,6 @@ void screen_time(void)
 }
 void screen_alarms(void)
 {
-	//HAL_NVIC_DisableIRQ(TIM7_IRQn);
 	display_screen_alarms();
 	arrow_row = ROW_ALARM1;
 	screen_send_line("->",menu.alarm1.arrowxy);
@@ -635,12 +723,15 @@ void screen_alarms(void)
 }
 void screen_alarmSelected(alarmNumber alarmNumberx)
 {
-	alarmTime alarmTimex = {0};
-	alarmTimex.number = ALARM_NONE;
-	flag_GPIO_it = FALSE;
-	update_alarmTime(&alarmTimex);
-	itSource = SOURCE_NOTHING;
+	uint8_t hours,minutes;
+	alarms[alarmNumberx].number = alarmNumberx;
+	hours = alarms[alarmNumberx].hour;
+	minutes = alarms[alarmNumberx].minutes;
 
+	flag_GPIO_it = FALSE;
+	screen_clear();
+	display_alarm(alarmNumberx);
+	itSource = SOURCE_NOTHING;
 	while(1)
 	{
 		while(1)
@@ -648,12 +739,12 @@ void screen_alarmSelected(alarmNumber alarmNumberx)
 			    while(!flag_GPIO_it);
 				switch(itSource)
 				{
-					case SOURCE_BUTTON_DOWN: if(alarmTimex.hour > 1) alarmTimex.hour = alarmTimex.hour - 1;break;
-					case SOURCE_BUTTON_UP:	if(alarmTimex.hour < 23) alarmTimex.hour = alarmTimex.hour + 1;break;
+					case SOURCE_BUTTON_DOWN: if(hours > 0) hours = hours - 1;break;
+					case SOURCE_BUTTON_UP:	if(hours < 23) hours = hours + 1;break;
 					default: break;
 			    }
-				alarmTimex.number = alarmNumberx;
-				update_alarmTime(&alarmTimex);
+				alarms[alarmNumberx].hour = hours;
+				display_alarm(alarmNumberx);
 				flag_GPIO_it = FALSE;
 				if (itSource == SOURCE_BUTTON_ENTER)
 					break;
@@ -665,19 +756,19 @@ void screen_alarmSelected(alarmNumber alarmNumberx)
 			    while(!flag_GPIO_it);
 				switch(itSource)
 				{
-					case SOURCE_BUTTON_DOWN: if(alarmTimex.minutes > 1) alarmTimex.minutes = alarmTimex.minutes - 1;break;
-					case SOURCE_BUTTON_UP:	if(alarmTimex.minutes < 59) alarmTimex.minutes = alarmTimex.minutes + 1;break;
+					case SOURCE_BUTTON_DOWN: if(minutes > 0) minutes = minutes - 1;break;
+					case SOURCE_BUTTON_UP:	if(minutes < 59) minutes = minutes + 1;break;
 					default: break;
 				}
-				update_alarmTime(&alarmTimex);
+				alarms[alarmNumberx].minutes = minutes;
+				display_alarm(alarmNumberx);
 				flag_GPIO_it = FALSE;
 				if (itSource == SOURCE_BUTTON_ENTER)
 					break;
 				else
 					itSource = SOURCE_NOTHING;
 			}
-		//set_alarm(alarmTimex,alarmNumberx);
-		//set_time(&time);
+		setAlarm(&alarms[alarmNumberx]);
 		screen_main();
 	}
  }
@@ -711,10 +802,8 @@ void enable_it_buttons(void)
 // Call backs
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	HAL_TIM_OC_Start_IT(&tim3Buzzer_handle,TIM_CHANNEL_1);
-	HAL_TIM_Base_Start_IT(&tim6);
+	buzzerSound();
 	flag_GPIO_it = TRUE;
-	button_pressed = GPIO_Pin;
 	switch (GPIO_Pin)
 		{
 			case BUTTON_ENTER_PIN : itSource = SOURCE_BUTTON_ENTER;break;
@@ -729,14 +818,46 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		display_hour();
 	}
-
+	//if it is TIM6 buzzer is off
 	if(htim->Instance == TIM6)
 
 	{
-		HAL_TIM_OC_Stop(&tim3Buzzer_handle,TIM_CHANNEL_1);
 		HAL_TIM_Base_Stop_IT(&tim6);
+		HAL_TIM_OC_Stop(&tim3Buzzer_handle,TIM_CHANNEL_1);
+		//HAL_TIM_OC_Stop_IT(&tim3Buzzer_handle,TIM_CHANNEL_1);
 	}
 
+	/*
+	//software to avoid button debouncing
+	if(htim->Instance == TIM4)
+	{
+		switch(itSource)
+		{
+			case BUTTON_ENTER_PIN: if(HAL_GPIO_ReadPin(GPIOB,BUTTON_ENTER_PIN) == FALSE)
+								   {
+								   	   flag_GPIO_it = TRUE;
+								   }
+								   break;
+			case BUTTON_UP_PIN : if(HAL_GPIO_ReadPin(GPIOB,BUTTON_UP_PIN) == FALSE)
+								 {
+								 	  flag_GPIO_it = TRUE;
+								 }
+			   	   	   	   	   	 break;
+			case BUTTON_DOWN_PIN : if(HAL_GPIO_ReadPin(GPIOB,BUTTON_DOWN_PIN) == FALSE)
+								   {
+								   	   flag_GPIO_it = TRUE;
+								   }
+								   break;
+			default : break;
+		}
+
+		if(flag_GPIO_it == TRUE)
+		{
+			HAL_TIM_OC_Start(&tim3Buzzer_handle,TIM_CHANNEL_1);
+			//HAL_TIM_Base_Start_IT(&tim6);//to stop buzzer
+			//HAL_TIM_Base_Stop_IT(&tim4Debounce);
+		}*/
+		//HAL_TIM_Base_Stop_IT(&tim4Debounce);
 }
 
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
@@ -747,6 +868,19 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 	 }
 }
 
+ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
+{
+	 uint8_t alarmPending = NO_ALARM_PENDING;
+	 dispense();
+
+	 //alarmPending = getAlarmPending();
+	 //setAlarm(&alarms[alarmPending]);
+}
+/*
+void HAL_RTCEx_AlarmBEventCallback(RTC_HandleTypeDef *hrtc)
+{
+
+}*/
 void update_time(uint8_t t,uint8_t m)
 {
 	char time_chr[3];

@@ -4,6 +4,8 @@
 
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_rtc.h"
+#include "lcd1602_i2c.h"
+
 //#include "lcd_i2c.h"
 #include "screenDriver.h"
 #include "servo.h"
@@ -51,6 +53,7 @@ typedef enum
 #define TRUE 1
 #define FALSE 0
 
+//p
 // global variables
 TIM_HandleTypeDef tim6;
 TIM_HandleTypeDef tim7;
@@ -114,19 +117,29 @@ RTC_HandleTypeDef rtc;
     #define XY_MINUTES_ZERO	    {0,8}
 
 #endif
-/////////
-/*
- * Test
- */
+//interrupt priorities
+
+#define PRIORITY_BUZZER				2
+#define PRIORIT_DISPLAY_UPDATE		3
+#define PRIORITY_BUZZER_SOUND		2
+#define PRIORITY_BUTTON		     	2
+#define PRIORITY_BUTTON_DEBAUNCE	2
+#define PRIORITY_ALARM				2
+
+#define NUM_ALARMS_USED 			3
+#define NO_ALARM_PENDING 			NUM_ALARMS_USED + 1
+
 typedef struct
 {
 	uint16_t screenxy[2];
 	uint16_t arrowxy[2];
 }menu_a; // menu with arrow
+
 typedef struct
 {
 	uint16_t screenxy[2];
 }menu_e; // menu element
+
 typedef struct
 {
 	menu_a feed;
@@ -143,6 +156,7 @@ typedef struct
 	menu_e speed_center;
 	menu_e speed_value;
 }menu_s;
+
 menu_s menu = { MENU_FEED,MENU_SETTINGS,
 				MENU_SPEED,MENU_TIME,
 				MENU_ALARMS,MENU_BACK,
@@ -151,6 +165,7 @@ menu_s menu = { MENU_FEED,MENU_SETTINGS,
 				MENU_CENTER,MENU_SPEED_CENTER,
 				MENU_SPEED_VALUE
 			  };
+
 typedef struct
 {
 	uint16_t hour_one_digit[2];
@@ -169,14 +184,17 @@ typedef enum
 }alarmNumber;
 typedef struct
 {
-	uint8_t hour;
-	uint8_t minutes;
-	bool	activate;
+	uint8_t 	hour;
+	uint8_t 	minutes;
+	bool		active;
+	bool		alarmA;
+	bool 		pending;
 	alarmNumber number;
 }alarmTime;
 
 
-alarmTime alarm1,alarm2,alarm3;
+alarmTime alarms[NUM_ALARMS_USED];
+
 time_s timexy = {XY_HOUR_ONE_DIGIT,XY_HOUR_TWO_DIGITS,XY_COLON,XY_MINUTES,XY_MINUTES_ZERO};
 
 int	arrow_row = ROW_FEED;
@@ -196,32 +214,38 @@ void display_screen_alarms(void);
 void display_screen_time(void);
 void display_hour(void);
 void display_screen_alarmSelected(alarmNumber alarmx);
+
 void screen_main(void);
 void screen_cycles(void);
 void screen_speed(void);
 void screen_settings(void);
 void screen_alarms(void);
 void screen_time(void);
+void screen_alarmSelected(alarmNumber alarmNumber);
+
 // dispense functions
 void dispense(void);
+
 // init functions
-void GPIO_Init(void);
+void GPIO_init(void);
 void SystemClock_Config(void);
 static void MX_I2C1_Init(void);
 void RTC_Init(void);
-void tim6Buzzer_Init(void);
-void tim7_Init(void);
+void tim3buzzer_init(void);
+void tim6BuzzerSound_init(void);
+void tim7DisplayUpdate_init(void);
+
 // error handler functions
 void Error_Handler(void);
+
 // RTC functions
 void set_time(RTC_TimeTypeDef *time);
 void update_time(uint8_t t,uint8_t m);
+
 // enable and disable buttons
 void enable_it_buttons(void);
 void disable_it_buttons(void);
 void clear_arrowSettings(void);
-
-void screen_alarmSelected(alarmNumber alarmNumber);
 void clear_arrowAlarms(void);
 
 //buzzer functions

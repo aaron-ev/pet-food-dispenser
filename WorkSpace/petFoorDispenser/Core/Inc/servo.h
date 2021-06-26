@@ -22,6 +22,7 @@
 #define SERVO_SIGNAL_1ms	100 //  when P2CLK = 8 MHz
 #define SERVO_SIGNAL_0_5ms	50 //  when P2CLK = 8 MHz
 
+#define PRIORITY_SERVO		1
 
 void servo_Init(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
 void servo_Write(uint8_t degrees);
