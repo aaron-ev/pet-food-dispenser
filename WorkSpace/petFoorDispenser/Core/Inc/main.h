@@ -188,6 +188,7 @@ typedef struct
 	uint8_t 	minutes;
 	bool		active;
 	bool		alarmA;
+	uint8_t     acumValue;
 	bool 		pending;
 	alarmNumber number;
 }alarmTime;

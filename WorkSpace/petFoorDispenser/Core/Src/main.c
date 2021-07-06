@@ -5,47 +5,84 @@ TIM_HandleTypeDef tim3Buzzer_handle = {0};
 TIM_HandleTypeDef tim4Debounce = {0};
 
 uint32_t pulse294Hz = 170;
+uint8_t numAlarmsSet;
 
 
-void alarmReorder(alarmTime *alarmTimex)
+/*
+void swapAlarms(alarmTime **A,uint8_t i,uint8_t j)
+{
+	alarmTime *temp;
+	temp = *(&A[i]);
+	A[i] = A[j];
+	A[j] = temp;
+}
+void gnomeSort(alarmTime **A,uint32_t sizeA)
+{
+    int index = 0;
+    while(index < sizeA)
+    {
+        if (index == 0)
+            index++;
+        if (A[index]->acumValue >= A[index - 1]->acumValue)
+            index++;
+        else
+        {
+            swapAlarms(A,index,index-1);
+            index--;
+        }
+    }
+}
+*/
+alarmNumber nearestAlarm(alarmTime *alarms,uint8_t alarmsSet)
+{
+    uint8_t i;
+    alarmTime *minAlarm = &alarms[0];
+    for(i = 1; i < alarmsSet;i = i + 1)
+    {
+        if(alarms[i].acumValue < minAlarm->acumValue)
+            minAlarm = &alarms[i];
+    }
+    return (&(*minAlarm))->number;
+}
+alarmNumber alarmReorder(void)
 {
 	RTC_TimeTypeDef time = {0};
-	uint8_t i,j;
-	uint8_t d[NUM_ALARMS_USED];
+	uint8_t i,j,count;
+
 	HAL_RTC_GetTime(&rtc,&time,RTC_FORMAT_BIN);
-	uint8_t count;
-	for(i = 0; i < NUM_ALARMS_USED; i = i + 1)
+
+	for(i = 0; i < 3; i = i + 1)
 	{
 		count = alarms[i].hour;
-		for(j = 0; j < 24; i = i + 1)
+		for(j = 0; j < 24; j = j + 1)
 		{
-			count++;
-			if(count == 25)
+			if(count == 23)
 				count = 0;
-
 			if(count == time.Hours)
 			{
-				d[i] = j;
+				alarms[i].acumValue = j;
 				break;
 			}
+			count++;
 		}
 	}
 
-	for(i = 0; i < NUM_ALARMS_USED; i = i + 1)
+	for(i = 0; i < 3; i = i + 1)
 	{
-		count = alarmTimex[i].minutes;
-		for(j = 0; j < 60; i = i + 1)
+		count = alarms[i].minutes;
+		for(j = 0; j < 60; j = j + 1)
 		{
-			count++;
-			if(count == 61)
+			if(count == 59)
 				count = 0;
 			if(count == time.Minutes)
 			{
-				d[i] = d[i] + j;
+				alarms[i].acumValue = alarms[i].acumValue + j;
 				break;
 			}
+			count++;
 		}
-	}
+	};
+	return nearestAlarm(alarms,3);
 }
 
 uint8_t getAlarmsActive(void)
@@ -97,35 +134,46 @@ void tim3Debounce_init(void)
 	HAL_NVIC_EnableIRQ(TIM4_IRQn);
 }
 
-void setAlarm(alarmTime *alarmTimex)
+void handleAlarm(alarmNumber alarmNumberx)
 {
 	RTC_AlarmTypeDef sAlarm = {0};
-	uint8_t numAlarmsActive = getAlarmsActive();
-	if(numAlarmsActive == 0)
+	numAlarmsSet = 3;
+	alarms[0].hour = 12;
+	alarms[0].minutes = 12;
+	alarms[1].hour = 14;
+	alarms[1].minutes = 1;
+	alarms[2].hour = 15;
+	alarms[2].minutes = 0;
+
+	numAlarmsSet  = getaAlarmsActive();
+	alarms[alarmNumberx].active = TRUE;
+	if (numAlarmsSet == 0)
 	{
-		sAlarm.Alarm = RTC_ALARM_A;
-		alarms[alarmTimex->number].active = TRUE;
-	}
-	else if (numAlarmsActive == 1)
-	{
-		sAlarm.Alarm = RTC_ALARM_B;
-		alarms[alarmTimex->number].active = TRUE;
+		alarms[alarmNumberx].active = TRUE;
+		setAlarm(alarmNumberx);
 	}
 	else
-		alarmReorder(alarmTimex);
-
-	if(alarmTimex->pending == FALSE)
 	{
-		sAlarm.AlarmTime.Hours = alarmTimex->hour;
-		sAlarm.AlarmTime.Minutes = alarmTimex->minutes;
-		sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY | RTC_ALARMMASK_SECONDS;
+		setAlarm(alarmReorder());
+	}
 
-		if(HAL_RTC_SetAlarm_IT(&rtc,&sAlarm,RTC_FORMAT_BIN) != HAL_OK)
-		{
-			Error_Handler();
-		}
+}
+void setAlarm(alarmNumber alarmNumberx)
+{
+	RTC_AlarmTypeDef sAlarm = {0};
+
+	sAlarm.Alarm = RTC_ALARM_A;
+	sAlarm.AlarmTime.Hours = alarms[alarmNumberx].hour;
+	sAlarm.AlarmTime.Minutes = alarms[alarmNumberx].minutes;
+	sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY | RTC_ALARMMASK_SECONDS;
+
+	if(HAL_RTC_SetAlarm_IT(&rtc,&sAlarm,RTC_FORMAT_BIN) != HAL_OK)
+	{
+		Error_Handler();
 	}
 }
+
+
 void display_alarm(alarmNumber alarmNumberx)
 {
 	char hour[3];
@@ -170,7 +218,11 @@ int main(void)
 	while (1)
 	{
 		HAL_TIM_Base_Start_IT(&tim7);
-		screen_main();
+		//screen_main();
+		//test zone
+		alarmTime time = {0};
+		setAlarm(&time);
+
 	}
 }
 
@@ -768,7 +820,7 @@ void screen_alarmSelected(alarmNumber alarmNumberx)
 				else
 					itSource = SOURCE_NOTHING;
 			}
-		setAlarm(&alarms[alarmNumberx]);
+		handleAlarm(alarmNumberx);
 		screen_main();
 	}
  }
